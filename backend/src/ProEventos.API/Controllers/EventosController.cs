@@ -1,8 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ProEventos.API.Data;
+using ProEventos.API.Models;
 
 namespace ProEventos.API.Controllers
 {
@@ -10,6 +11,24 @@ namespace ProEventos.API.Controllers
     [Route("api/v1/eventos")]
     public class EventosController : ControllerBase
     {
+        private ApplicationDbContext _context;
+        public EventosController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
+        [HttpGet]
+        public ActionResult<IEnumerable<Evento>> GetEventos()
+        {
+            var eventos = _context.Eventos.Where(evento => evento.Status == true).AsNoTracking().ToList();
+            return StatusCode(200, eventos);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetEventoId(int id)
+        {
+            var evento = _context.Eventos.FirstOrDefault(evento => evento.Id == id);
+            return StatusCode(200, evento);
+        }
     }
 }
