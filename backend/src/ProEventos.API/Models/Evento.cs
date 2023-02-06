@@ -9,5 +9,6 @@ namespace ProEventos.API.Models
         public int QtdPessoas { get; set; }
         public string Lote { get; set; }
         public string ImagemUrl { get; set; }
+        public bool Status { get; set; }
     }
 }
