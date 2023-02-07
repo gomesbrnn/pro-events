@@ -17,6 +17,7 @@ namespace ProEventos.API
         }
 
         public IConfiguration Configuration { get; }
+        string allowedOrigins = "_allowedOrigins";
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -24,6 +25,21 @@ namespace ProEventos.API
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+            string[] methods = new string[] { "GET", "POST", "PUT", "DELETE" };
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: allowedOrigins,
+                                  policy =>
+                                  {
+                                      policy
+                                            .AllowAnyMethod()
+                                            .AllowAnyHeader()
+                                            .AllowAnyOrigin()
+                                            .WithOrigins("http://localhost:4200")
+                                            .WithMethods(methods);
+                                  });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -46,6 +62,8 @@ namespace ProEventos.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(allowedOrigins);
 
             app.UseEndpoints(endpoints =>
             {
