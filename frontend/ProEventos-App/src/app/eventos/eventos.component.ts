@@ -12,6 +12,7 @@ export class EventosComponent implements OnInit {
   constructor(private eventoService: EventoService) { }
 
   public eventos: Evento[] = [];
+  exibirImagem: boolean = true;
 
   public getEventos() {
     this.eventoService.getEventos().subscribe(
@@ -27,5 +28,9 @@ export class EventosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEventos()
+  }
+
+  alterarImagem() {
+    this.exibirImagem = !this.exibirImagem;
   }
 }
