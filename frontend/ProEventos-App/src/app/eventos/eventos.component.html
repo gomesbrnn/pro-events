@@ -6,7 +6,7 @@
   <form action="" class="form-inline">
     <div class="form-group mb-2">
       <input type="text" class="form-control mr-2" placeholder="Buscar">
-      <button class="btn btn-outline-success">Buscar</button>
+      <button class="btn btn-outline-info">Buscar</button>
     </div>
   </form>
 
@@ -23,24 +23,28 @@
         <th>Opções</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <tbody *ngIf="eventos && eventos.length">
+      <tr *ngFor="let evento of eventos">
+        <td>{{evento.id}}</td>
+        <td><img src="/assets/{{evento.imagemUrl}}"></td>
+        <td>{{evento.tema}}</td>
+        <td>{{evento.local}}</td>
+        <td>{{evento.data}}</td>
+        <td>{{evento.qtdPessoas}}</td>
+        <td>{{evento.lote}}</td>
+        <td>
+          <a class="btn btn-outline-success btn-sm" href="">Editar</a>
+          <a class="btn btn-outline-danger btn-sm" href="">Excluir</a>
+        </td>
       </tr>
     </tbody>
+    <tfoot *ngIf="!eventos.length">
+      <tr>
+        <td colspan="8" class="text-center">
+          <h4>Nenhum evento encontrado!</h4>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 
 </div>
-
-<!-- <div *ngFor="let evento of eventos">
-  <p><b>Tema:</b> {{evento.tema}}</p>
-  <p><b>Local:</b> {{evento.local}}</p>
-  <hr>
-</div> -->
