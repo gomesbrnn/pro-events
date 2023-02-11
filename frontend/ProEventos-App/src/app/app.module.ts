@@ -11,6 +11,7 @@ import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { NavComponent } from './nav/nav.component';
 
 import { EventoService } from './services/evento.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EventoService } from './services/evento.service';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    FormsModule
   ],
   providers: [
     EventoService
