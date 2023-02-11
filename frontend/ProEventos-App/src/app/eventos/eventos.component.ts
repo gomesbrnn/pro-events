@@ -13,6 +13,7 @@ export class EventosComponent implements OnInit {
 
   public eventos: Evento[] = [];
   exibirImagem: boolean = true;
+  filtroEventos: string = '';
 
   public getEventos() {
     this.eventoService.getEventos().subscribe(
