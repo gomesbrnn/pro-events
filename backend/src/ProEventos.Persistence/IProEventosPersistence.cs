@@ -11,10 +11,10 @@ namespace ProEventos.Persistence
         /// <summary>
         /// GERAL
         /// </summary>
-        public void Add<T>(T Entity) where T : class;
-        public void Update<T>(T Entity) where T : class;
-        public void Delete<T>(T Entity) where T : class;
-        public void DeleteRange<T>(T[] Entity) where T : class;
+        public void Add<T>(T entity) where T : class;
+        public void Update<T>(T entity) where T : class;
+        public void Delete<T>(T entity) where T : class;
+        public void DeleteRange<T>(T[] entity) where T : class;
         Task<bool> SaveChangesAsync();
 
         /// <summary>
