@@ -11,24 +11,24 @@ namespace ProEventos.Persistence
         /// <summary>
         /// GERAL
         /// </summary>
-        public void Add<T>(T entity) where T : class;
-        public void Update<T>(T entity) where T : class;
-        public void Delete<T>(T entity) where T : class;
-        public void DeleteRange<T>(T[] entityArray) where T : class;
+        void Add<T>(T entity) where T : class;
+        void Update<T>(T entity) where T : class;
+        void Delete<T>(T entity) where T : class;
+        void DeleteRange<T>(T[] entityArray) where T : class;
         Task<bool> SaveChangesAsync();
 
         /// <summary>
         /// EVENTOS
         /// </summary>
-        public Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes);
-        public Task<Evento[]> GetAllEventosAsync(bool includePalestrantes);
-        public Task<Evento> GetEventoByIdAsync(int id, bool includePalestrantes);
+        Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes);
+        Task<Evento[]> GetAllEventosAsync(bool includePalestrantes);
+        Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes);
 
         /// <summary>
         /// PALESTRANTES
         /// </summary>
-        public Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos);
-        public Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos);
-        public Task<Palestrante> GetPalestranteByIdAsync(int id, bool includeEventos);
+        Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos);
+        Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos);
+        Task<Palestrante> GetPalestranteByIdAsync(int PalestranteId, bool includeEventos);
     }
 }
