@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProEventos.API.Data;
-using ProEventos.API.Models;
+using ProEventos.Domain.Models;
+using ProEventos.Persistence;
 
 namespace ProEventos.API.Controllers
 {
@@ -11,8 +11,8 @@ namespace ProEventos.API.Controllers
     [Route("api/v1/eventos")]
     public class EventosController : ControllerBase
     {
-        private ApplicationDbContext _context;
-        public EventosController(ApplicationDbContext context)
+        private ProEventosContext _context;
+        public EventosController(ProEventosContext context)
         {
             _context = context;
         }
