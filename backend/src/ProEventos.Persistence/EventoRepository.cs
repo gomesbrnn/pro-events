@@ -50,6 +50,7 @@ namespace ProEventos.Persistence
 
             return await query.ToArrayAsync();
         }
+
         public async Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes = false)
         {
             IQueryable<Evento> query = _context.Eventos
@@ -66,6 +67,15 @@ namespace ProEventos.Persistence
             }
 
             return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<Evento> DeleteEventoById(int EventoId, bool includePalestrantes = false)
+        {
+            Evento evento = await _context.Eventos.FirstOrDefaultAsync(e => e.Id == EventoId);
+
+            if (evento is not null) evento.Status = false;
+
+            return evento;
         }
     }
 }
