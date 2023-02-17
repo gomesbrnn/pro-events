@@ -65,5 +65,14 @@ namespace ProEventos.Persistence
 
             return await query.FirstOrDefaultAsync();
         }
+
+        public async Task<Palestrante> DeletePalestranteById(int palestranteId)
+        {
+            Palestrante palestrante = await _context.Palestrantes.FirstOrDefaultAsync(p => p.Id == palestranteId);
+
+            if (palestrante is not null) palestrante.Status = false;
+
+            return palestrante;
+        }
     }
 }

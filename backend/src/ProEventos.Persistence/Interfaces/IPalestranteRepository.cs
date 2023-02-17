@@ -7,6 +7,7 @@ namespace ProEventos.Persistence.Interfaces
     {
         Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos = false);
         Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false);
-        Task<Palestrante> GetPalestranteByIdAsync(int PalestranteId, bool includeEventos = false);
+        Task<Palestrante> GetPalestranteByIdAsync(int palestranteId, bool includeEventos = false);
+        Task<Palestrante> DeletePalestranteById(int palestranteId);
     }
 }
