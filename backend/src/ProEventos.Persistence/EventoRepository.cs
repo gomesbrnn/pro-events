@@ -21,6 +21,7 @@ namespace ProEventos.Persistence
             IQueryable<Evento> query = _context.Eventos
                                                        .Include(e => e.Lotes)
                                                        .Include(e => e.RedesSociais)
+                                                       .Where(e => e.Status == true)
                                                        .OrderBy(e => e.Id);
 
             if (includePalestrantes is true)
@@ -38,7 +39,7 @@ namespace ProEventos.Persistence
             IQueryable<Evento> query = _context.Eventos
                                                         .Include(e => e.Lotes)
                                                         .Include(e => e.RedesSociais)
-                                                        .Where(e => e.Tema.ToLower() == tema.ToLower())
+                                                        .Where(e => e.Tema.ToLower() == tema.ToLower() && e.Status == true)
                                                         .OrderBy(e => e.Id);
 
             if (includePalestrantes is true)
@@ -56,7 +57,7 @@ namespace ProEventos.Persistence
             IQueryable<Evento> query = _context.Eventos
                                                         .Include(e => e.Lotes)
                                                         .Include(e => e.RedesSociais)
-                                                        .Where(e => e.Id == EventoId)
+                                                        .Where(e => e.Id == EventoId && e.Status == true)
                                                         .OrderBy(e => e.Id);
 
             if (includePalestrantes is true)
