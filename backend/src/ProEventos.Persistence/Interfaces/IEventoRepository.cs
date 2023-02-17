@@ -5,8 +5,8 @@ namespace ProEventos.Persistence.Interfaces
 {
     public interface IEventoRepository
     {
-        Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes);
-        Task<Evento[]> GetAllEventosAsync(bool includePalestrantes);
-        Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes);
+        Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes = false);
+        Task<Evento[]> GetAllEventosAsync(bool includePalestrante = false);
+        Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes = false);
     }
 }
