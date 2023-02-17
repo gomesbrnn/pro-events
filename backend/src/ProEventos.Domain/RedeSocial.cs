@@ -10,5 +10,10 @@ namespace ProEventos.Domain.Models
         public int? PalestranteId { get; set; }
         public Palestrante Palestrante { get; set; }
         public bool Status { get; set; }
+
+        public RedeSocial()
+        {
+            Status = true;
+        }
     }
 }
