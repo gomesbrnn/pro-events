@@ -75,6 +75,7 @@ namespace ProEventos.Application
             try
             {
                 var eventos = await _eventoRepository.GetAllEventosAsync(includePalestrantes);
+
                 if (eventos is null) return null;
 
                 return eventos;
@@ -90,7 +91,8 @@ namespace ProEventos.Application
             try
             {
                 var evento = await _eventoRepository.GetAllEventosByTemaAsync(tema, includePalestrantes);
-                if (evento is null) throw new Exception("Tema invalido ou evento inexistente");
+
+                if (evento is null) return null;
 
                 return evento;
             }
@@ -105,7 +107,8 @@ namespace ProEventos.Application
             try
             {
                 var evento = await _eventoRepository.GetEventoByIdAsync(eventoId, includePalestrantes);
-                if (evento is null) throw new Exception("Id invalido ou evento inexistente.");
+
+                if (evento is null) return null;
 
                 return evento;
             }
