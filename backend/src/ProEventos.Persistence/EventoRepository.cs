@@ -52,12 +52,12 @@ namespace ProEventos.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes = false)
+        public async Task<Evento> GetEventoByIdAsync(int eventoId, bool includePalestrantes = false)
         {
             IQueryable<Evento> query = _context.Eventos
                                                         .Include(e => e.Lotes)
                                                         .Include(e => e.RedesSociais)
-                                                        .Where(e => e.Id == EventoId && e.Status == true)
+                                                        .Where(e => e.Id == eventoId && e.Status == true)
                                                         .OrderBy(e => e.Id);
 
             if (includePalestrantes is true)
@@ -70,9 +70,9 @@ namespace ProEventos.Persistence
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<Evento> DeleteEventoById(int EventoId, bool includePalestrantes = false)
+        public async Task<Evento> DeleteEventoById(int eventoId, bool includePalestrantes = false)
         {
-            Evento evento = await _context.Eventos.FirstOrDefaultAsync(e => e.Id == EventoId);
+            Evento evento = await _context.Eventos.FirstOrDefaultAsync(e => e.Id == eventoId);
 
             if (evento is not null) evento.Status = false;
 
