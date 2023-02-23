@@ -21,7 +21,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEventos()
+        public async Task<IActionResult> Get()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEventoById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet("{tema}")]
-        public async Task<IActionResult> GetEventoByTema(string tema)
+        public async Task<IActionResult> GetByTema(string tema)
         {
             try
             {
