@@ -24,42 +24,95 @@ namespace ProEventos.Application
             {
                 _geralRepository.Add<Evento>(model);
 
-                if (await _geralRepository.SaveChangesAsync())
-                {
-                    return await _eventoRepository.GetEventoByIdAsync(model.Id, false);
-                }
+                if (!await _geralRepository.SaveChangesAsync()) return null;
 
-                return null;
+                return model;
             }
             catch (Exception ex)
             {
-
-                throw new Exception("");
+                throw new Exception(ex.Message);
             }
         }
 
-        public Task<Evento> UpdateEvento(int eventoId, Evento model)
+        public async Task<Evento> UpdateEvento(int eventoId, Evento model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var evento = await _eventoRepository.GetEventoByIdAsync(eventoId, false);
+                if (evento is null) throw new Exception("Evento solicitado não foi econtrado ou não existe.");
+
+                model.Id = eventoId;
+                _geralRepository.Update<Evento>(model);
+
+                if (!await _geralRepository.SaveChangesAsync()) return null;
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
-        public Task<Evento> DeleteEvento(int eventoId)
+        public async Task<Evento> DeleteEvento(int eventoId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var evento = await _eventoRepository.GetEventoByIdAsync(eventoId, false);
+                if (evento is null) throw new Exception("Evento solicitado não foi econtrado ou não existe.");
+
+                await _eventoRepository.DeleteEventoById(evento.Id);
+
+                return evento;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<Evento[]> GetAllEventosAsync(bool includePalestrantes = false)
+        public async Task<Evento[]> GetAllEventosAsync(bool includePalestrantes = false)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var eventos = await _eventoRepository.GetAllEventosAsync(includePalestrantes);
+                if (eventos is null) return null;
+
+                return eventos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes = false)
+        public async Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes = false)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var evento = await _eventoRepository.GetAllEventosByTemaAsync(tema, includePalestrantes);
+                if (evento is null) throw new Exception("Tema invalido ou evento inexistente");
+
+                return evento;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes = false)
+        public async Task<Evento> GetEventoByIdAsync(int eventoId, bool includePalestrantes = false)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var evento = await _eventoRepository.GetEventoByIdAsync(eventoId, includePalestrantes);
+                if (evento is null) throw new Exception("Id invalido ou evento inexistente.");
+
+                return evento;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
