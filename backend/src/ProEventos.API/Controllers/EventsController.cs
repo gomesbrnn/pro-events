@@ -11,13 +11,13 @@ using ProEventos.Persistence.Context;
 namespace ProEventos.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/eventos")]
-    public class EventosController : ControllerBase
+    [Route("api/v1/events")]
+    public class EventsController : ControllerBase
     {
-        private readonly IEventoService _eventoService;
-        public EventosController(IEventoService eventoService)
+        private readonly IEventService _eventService;
+        public EventsController(IEventService eventService)
         {
-            _eventoService = eventoService;
+            _eventService = eventService;
         }
 
         [HttpGet]
@@ -25,17 +25,17 @@ namespace ProEventos.API.Controllers
         {
             try
             {
-                var eventos = await _eventoService.GetAllEventosAsync(true);
+                var events = await _eventService.GetAllEventsAsync(true);
 
-                if (eventos is null) return NoContent();
+                if (events is null) return NoContent();
 
-                return Ok(eventos);
+                return Ok(events);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Não foi possivel tratar sua solicitação",
+                    titulo = "Unable to process your request.",
                     status = 500,
                     detalhes = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
@@ -48,17 +48,17 @@ namespace ProEventos.API.Controllers
         {
             try
             {
-                var evento = await _eventoService.GetEventoByIdAsync(id, true);
+                var @event = await _eventService.GetEventByIdAsync(id, true);
 
-                if (evento is null) return NoContent();
+                if (@event is null) return NoContent();
 
-                return Ok(evento);
+                return Ok(@event);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Não foi possivel tratar sua solicitação",
+                    titulo = "Unable to process your request.",
                     status = 500,
                     detalhes = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
@@ -66,22 +66,22 @@ namespace ProEventos.API.Controllers
             }
         }
 
-        [HttpGet("tema/{tema}")]
-        public async Task<IActionResult> GetByTema(string tema)
+        [HttpGet("theme/{theme}")]
+        public async Task<IActionResult> GetByTheme(string theme)
         {
             try
             {
-                var evento = await _eventoService.GetAllEventosByTemaAsync(tema, true);
+                var @event = await _eventService.GetAllEventsByThemeAsync(theme, true);
 
-                if (evento is null) return NoContent();
+                if (@event is null) return NoContent();
 
-                return Ok(evento);
+                return Ok(@event);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Não foi possivel tratar sua solicitação",
+                    titulo = "Unable to process your request.",
                     status = 500,
                     detalhes = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")

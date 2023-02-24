@@ -4,11 +4,11 @@ using ProEventos.Persistence.Interfaces;
 
 namespace ProEventos.Persistence
 {
-    public class GeralRepository : IGeralRepository
+    public class GeneralRepository : IGeneralRepository
     {
-        private readonly ProEventosContext _context;
+        private readonly AppDbContext _context;
 
-        public GeralRepository(ProEventosContext context)
+        public GeneralRepository(AppDbContext context)
         {
             _context = context;
         }

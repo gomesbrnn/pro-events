@@ -23,7 +23,7 @@ namespace ProEventos.API
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<ProEventosContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             string[] methods = new string[] { "GET", "POST", "PUT", "DELETE" };
