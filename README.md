@@ -1,2 +1,2 @@
 # PRO-EVENTOS
-Aplicação fullstack de agendamento de eventos online
+Online event scheduling Fullstack App.
