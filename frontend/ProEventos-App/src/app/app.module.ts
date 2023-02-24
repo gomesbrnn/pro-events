@@ -6,18 +6,18 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { EventsComponent } from './@events/events.component';
+import { SpeakersComponent } from './speakers/speakers.component';
 import { NavComponent } from './nav/nav.component';
 
-import { EventoService } from './services/evento.service';
+import { EventService } from './services/event.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventosComponent,
-    PalestrantesComponent,
+    EventsComponent,
+    SpeakersComponent,
     NavComponent
   ],
   imports: [
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    EventoService
+    EventService
   ],
   bootstrap: [AppComponent]
 })
