@@ -134,5 +134,28 @@ namespace ProEventos.API.Controllers
                 });
             }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var @event = await _eventService.DeleteEvent(id);
+
+                if (@event is null) return NotFound("The resquested event does not exist.");
+
+                return Ok(@event);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    title = "Unable to process your request.",
+                    status = 500,
+                    details = ex.Message,
+                    timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
+                });
+            }
+        }
     }
 }
