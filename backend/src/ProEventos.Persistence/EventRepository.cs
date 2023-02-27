@@ -74,7 +74,9 @@ namespace ProEventos.Persistence
         {
             Event eventQuery = await _context.Events.FirstOrDefaultAsync(e => e.Id == eventId);
 
-            if (eventQuery is not null) eventQuery.Status = false;
+            if (eventQuery is null) return null;
+
+            eventQuery.Status = false;
 
             return eventQuery;
         }
