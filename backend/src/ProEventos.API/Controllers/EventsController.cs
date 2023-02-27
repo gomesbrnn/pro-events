@@ -50,7 +50,7 @@ namespace ProEventos.API.Controllers
             {
                 var @event = await _eventService.GetEventByIdAsync(id, true);
 
-                if (@event is null) return NoContent();
+                if (@event is null) return NotFound();
 
                 return Ok(@event);
             }
