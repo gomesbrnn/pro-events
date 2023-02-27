@@ -111,5 +111,28 @@ namespace ProEventos.API.Controllers
                 });
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Event model)
+        {
+            try
+            {
+                var @event = await _eventService.UpdateEvent(id, model);
+
+                if (@event is null) return BadRequest();
+
+                return Ok(@event);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    titulo = "Unable to process your request.",
+                    status = 500,
+                    detalhes = ex.Message,
+                    timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
+                });
+            }
+        }
     }
 }
