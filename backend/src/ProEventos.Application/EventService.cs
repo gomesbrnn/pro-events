@@ -16,60 +16,6 @@ namespace ProEventos.Application
             _eventRepository = eventRepository;
         }
 
-        public async Task<Event> AddEvent(Event model)
-        {
-            try
-            {
-                _generalRepository.Add<Event>(model);
-
-                if (!await _generalRepository.SaveChangesAsync()) return null;
-
-                return model;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<Event> UpdateEvent(int eventId, Event model)
-        {
-            try
-            {
-                var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
-
-                if (@event is null) return null;
-
-                model.Id = eventId;
-                _generalRepository.Update<Event>(model);
-
-                if (!await _generalRepository.SaveChangesAsync()) return null;
-
-                return model;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public async Task<Event> DeleteEvent(int eventId)
-        {
-            try
-            {
-                var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
-
-                if (@event is null) return null;
-
-                await _eventRepository.DeleteEventById(@event.Id);
-
-                return @event;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         public async Task<Event[]> GetAllEventsAsync(bool includeSpeakers = false)
         {
             try
@@ -109,6 +55,61 @@ namespace ProEventos.Application
                 var @event = await _eventRepository.GetEventByIdAsync(eventId, includeSpeakers);
 
                 if (@event is null) return null;
+
+                return @event;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Event> AddEvent(Event model)
+        {
+            try
+            {
+                _generalRepository.Add<Event>(model);
+
+                if (!await _generalRepository.SaveChangesAsync()) return null;
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Event> UpdateEvent(int eventId, Event model)
+        {
+            try
+            {
+                var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
+
+                if (@event is null) return null;
+
+                model.Id = eventId;
+                _generalRepository.Update<Event>(model);
+
+                if (!await _generalRepository.SaveChangesAsync()) return null;
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Event> DeleteEvent(int eventId)
+        {
+            try
+            {
+                var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
+
+                if (@event is null) return null;
+
+                await _eventRepository.DeleteEventById(@event.Id);
 
                 return @event;
             }
