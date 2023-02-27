@@ -35,9 +35,9 @@ namespace ProEventos.API.Controllers
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Unable to process your request.",
+                    title = "Unable to process your request.",
                     status = 500,
-                    detalhes = ex.Message,
+                    details = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 });
             }
@@ -58,9 +58,9 @@ namespace ProEventos.API.Controllers
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Unable to process your request.",
+                    title = "Unable to process your request.",
                     status = 500,
-                    detalhes = ex.Message,
+                    details = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 });
             }
@@ -81,9 +81,9 @@ namespace ProEventos.API.Controllers
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Unable to process your request.",
+                    title = "Unable to process your request.",
                     status = 500,
-                    detalhes = ex.Message,
+                    details = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 });
             }
@@ -104,9 +104,9 @@ namespace ProEventos.API.Controllers
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Unable to process your request.",
+                    title = "Unable to process your request.",
                     status = 500,
-                    detalhes = ex.Message,
+                    details = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 });
             }
@@ -127,9 +127,9 @@ namespace ProEventos.API.Controllers
             {
                 return StatusCode(500, new
                 {
-                    titulo = "Unable to process your request.",
+                    title = "Unable to process your request.",
                     status = 500,
-                    detalhes = ex.Message,
+                    details = ex.Message,
                     timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 });
             }
