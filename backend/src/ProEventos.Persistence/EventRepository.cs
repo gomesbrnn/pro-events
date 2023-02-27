@@ -67,12 +67,12 @@ namespace ProEventos.Persistence
                              .ThenInclude(pe => pe.Speaker);
             }
 
-            return await query.FirstOrDefaultAsync();
+            return await query.FirstAsync();
         }
 
         public async Task<Event> DeleteEventById(int eventId, bool includeSpeakers = false)
         {
-            Event eventQuery = await _context.Events.FirstOrDefaultAsync(e => e.Id == eventId);
+            Event eventQuery = await _context.Events.FirstAsync(e => e.Id == eventId);
 
             if (eventQuery is null) return null;
 
