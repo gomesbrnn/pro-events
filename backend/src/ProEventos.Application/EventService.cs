@@ -37,7 +37,8 @@ namespace ProEventos.Application
             try
             {
                 var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
-                if (@event is null) throw new Exception("Requested event not found or does not exist.");
+
+                if (@event is null) return null;
 
                 model.Id = eventId;
                 _generalRepository.Update<Event>(model);
@@ -56,7 +57,8 @@ namespace ProEventos.Application
             try
             {
                 var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
-                if (@event is null) throw new Exception("Requested event not found or does not exist.");
+
+                if (@event is null) return null;
 
                 await _eventRepository.DeleteEventById(@event.Id);
 
