@@ -89,7 +89,7 @@ namespace ProEventos.Application
                 if (@event is null) return null;
 
                 model.Id = eventId;
-                _generalRepository.Update<Event>(model);
+                _generalRepository.Update(model);
 
                 if (!await _generalRepository.SaveChangesAsync()) return null;
 
