@@ -22,7 +22,8 @@ namespace ProEventos.Persistence
                                                        .Include(e => e.Lots)
                                                        .Include(e => e.SocialMedia)
                                                        .Where(e => e.Status == true)
-                                                       .OrderBy(e => e.Id);
+                                                       .OrderBy(e => e.Id)
+                                                       .AsNoTracking();
 
             if (includeSpeakers is true)
             {
@@ -40,7 +41,8 @@ namespace ProEventos.Persistence
                                                         .Include(e => e.Lots)
                                                         .Include(e => e.SocialMedia)
                                                         .Where(e => e.Theme.ToLower() == theme.ToLower() && e.Status == true)
-                                                        .OrderBy(e => e.Id);
+                                                        .OrderBy(e => e.Id)
+                                                        .AsNoTracking();
 
             if (includeSpeakers is true)
             {
@@ -58,7 +60,8 @@ namespace ProEventos.Persistence
                                                         .Include(e => e.Lots)
                                                         .Include(e => e.SocialMedia)
                                                         .Where(e => e.Id == eventId && e.Status == true)
-                                                        .OrderBy(e => e.Id);
+                                                        .OrderBy(e => e.Id)
+                                                        .AsNoTracking();
 
             if (includeSpeakers is true)
             {
