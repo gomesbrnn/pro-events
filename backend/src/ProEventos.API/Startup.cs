@@ -45,7 +45,11 @@ namespace ProEventos.API
                                   });
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddNewtonsoftJson(model =>
+                        model.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
 
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IGeneralRepository, GeneralRepository>();
