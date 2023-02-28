@@ -20,7 +20,8 @@ namespace ProEventos.Persistence
         {
             IQueryable<Speaker> query = _context.Speakers
                                                                  .Include(p => p.SocialMedia)
-                                                                 .OrderBy(p => p.Id);
+                                                                 .OrderBy(p => p.Id)
+                                                                 .AsNoTracking();
 
             if (includeEvents is true)
             {
@@ -35,9 +36,10 @@ namespace ProEventos.Persistence
         public async Task<Speaker[]> GetAllSpeakersByNameAsync(string name, bool includeEvents = false)
         {
             IQueryable<Speaker> query = _context.Speakers
-                                                                 .Include(p => p.SocialMedia)
-                                                                 .Where(p => p.Name.ToLower() == name.ToLower())
-                                                                 .OrderBy(p => p.Id);
+                                                         .Include(p => p.SocialMedia)
+                                                         .Where(p => p.Name.ToLower() == name.ToLower())
+                                                         .OrderBy(p => p.Id)
+                                                         .AsNoTracking();
 
             if (includeEvents is true)
             {
@@ -52,9 +54,10 @@ namespace ProEventos.Persistence
         public async Task<Speaker> GetSpeakerByIdAsync(int speakerId, bool includeEvents = false)
         {
             IQueryable<Speaker> query = _context.Speakers
-                                                                 .Include(p => p.SocialMedia)
-                                                                 .Where(p => p.Id == speakerId)
-                                                                 .OrderBy(p => p.Id);
+                                                         .Include(p => p.SocialMedia)
+                                                         .Where(p => p.Id == speakerId)
+                                                         .OrderBy(p => p.Id)
+                                                         .AsNoTracking();
 
             if (includeEvents is true)
             {
