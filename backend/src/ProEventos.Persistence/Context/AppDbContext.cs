@@ -19,6 +19,16 @@ namespace ProEventos.Persistence.Context
             modelBuilder.Entity<SpeakerEvent>()
                 .HasKey(speakerEvent =>
                 new { speakerEvent.EventId, speakerEvent.SpeakerId });
+
+            modelBuilder.Entity<Event>()
+                .HasMany(evt => evt.SocialMedia)
+                .WithOne(socialM => socialM.Event)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Speaker>()
+                .HasMany(spk => spk.SocialMedia)
+                .WithOne(socialM => socialM.Speaker)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
