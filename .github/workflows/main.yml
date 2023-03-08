@@ -26,13 +26,14 @@ jobs:
       working-directory: ./backend/src
       run: dotnet publish -c Release -o ./publish
         
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-
-    - name: Install Dependencies
+    - name: Install dependencies
+      working-directory: ./frontend/ProEventos-App
       run: npm install
 
-    - name: Build Angular App
-      run: npm run build --prod
+    - name: Build application
+      working-directory: ./frontend/ProEventos-App
+      run: npm run build
+
+    - name: Run tests
+      working-directory: ./frontend/ProEventos-App
+      run: npm run test
