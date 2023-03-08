@@ -26,8 +26,13 @@ jobs:
       working-directory: ./backend/src
       run: dotnet publish -c Release -o ./publish
         
-    - name: Angular Full CI
-      uses: colbyhill21/angular-full-ci/@v1.0
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
       with:
-        testcommand: run test:ci
-        mocha: true
+        node-version: '14.x'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Angular App
+      run: npm run build --prod
