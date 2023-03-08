@@ -27,7 +27,7 @@ jobs:
       run: dotnet publish -c Release -o ./publish
       
     - name: Updating ng dependencies 
-      uses: tinesoft/ngx-uptodate@main
+      uses: tinesoft/ngx-uptodate@master
       with:
         repo-token: ${{ secrets.TOKEN }}
         project-path: ./frontend/ProEventos-App
