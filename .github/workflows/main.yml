@@ -25,12 +25,6 @@ jobs:
     - name: Build and publish
       working-directory: ./backend/src
       run: dotnet publish -c Release -o ./publish
-      
-    - name: Updating ng dependencies 
-      uses: tinesoft/ngx-uptodate@master
-      with:
-        repo-token: ${{ secrets.TOKEN }}
-        project-path: ./frontend/ProEventos-App
         
     - name: Angular Full CI
       uses: colbyhill21/angular-full-ci/@v1.0
