@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -18,22 +21,33 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
-    - name: Restore dependencies
+    - name: Restore .NET dependencies
       working-directory: ./backend/src
       run: dotnet restore
       
-    - name: Build and publish
+    - name: Build and publish .NET app
       working-directory: ./backend/src
       run: dotnet publish -c Release -o ./publish
+      
+    - name: .NET app test
+      working-directory: ./backend/src
+      run: dotnet test --logger trx --results-directory TestResults
+      
+    - name: .NET test coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: published-files
+        path: bin/Release/net5.0
         
-    - name: Install dependencies
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+      
+    - name: Install Angular dependencies
       working-directory: ./frontend/ProEventos-App
       run: npm install
 
-    - name: Build application
+    - name: Build Angular app
       working-directory: ./frontend/ProEventos-App
-      run: npm run build
-
-    - name: Run tests
-      working-directory: ./frontend/ProEventos-App
-      run: npm run test
+      run: npm run build --prod
