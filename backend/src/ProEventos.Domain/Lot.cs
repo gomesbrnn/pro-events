@@ -13,5 +13,10 @@ namespace ProEventos.Domain.Models
         public int EventId { get; set; }
         public Event Event { get; set; }
         public bool Status { get; set; }
+
+        public Lot()
+        {
+            Status = true;
+        }
     }
 }
