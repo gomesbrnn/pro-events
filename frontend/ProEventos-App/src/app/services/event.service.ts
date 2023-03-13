@@ -16,12 +16,12 @@ export class EventService {
     return this.http.get<Event[]>(this.baseUrl)
   }
 
-  getEventById(id: number): Observable<Event> {
-    return this.http.get<Event>(this.baseUrl + `${id}`)
+  getEventByTheme(theme: string): Observable<Event[]> {
+    return this.http.get<Event[]>(this.baseUrl + `theme/${theme}`)
   }
 
-  getEventByTheme(theme: string): Observable<Event> {
-    return this.http.get<Event>(this.baseUrl + `theme/${theme}`)
+  getEventById(id: number): Observable<Event> {
+    return this.http.get<Event>(this.baseUrl + `${id}`)
   }
 
   createEvent(event: Event): Observable<Event> {
