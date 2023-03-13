@@ -16,7 +16,7 @@ export class EventsComponent implements OnInit {
   private _listFilter: string = '';
   public displayImage: boolean = true;
 
-  changeImageStatus() {
+  public changeImageStatus() {
     this.displayImage = !this.displayImage;
   }
 
