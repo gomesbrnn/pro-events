@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class EventService {
 
-  protected baseUrl: string = "https://localhost:5001/api/v1/"
+  protected baseUrl: string = "https://localhost:5001/api/v1/events/"
 
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.baseUrl + "events")
+    return this.http.get<Event[]>(this.baseUrl)
   }
 
   getEventById(id: number): Observable<Event> {
