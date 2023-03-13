@@ -1,5 +1,3 @@
-import { Event } from "./event";
-
 export interface Lot {
   id: number;
   name: string;
