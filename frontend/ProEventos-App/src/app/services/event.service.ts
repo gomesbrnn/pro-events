@@ -21,6 +21,6 @@ export class EventService {
   }
 
   getEventByTheme(theme: string): Observable<Event> {
-    return this.http.get<Event>(this.baseUrl + `${theme}`)
+    return this.http.get<Event>(this.baseUrl + `theme/${theme}`)
   }
 }
