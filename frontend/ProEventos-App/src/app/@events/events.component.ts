@@ -13,14 +13,14 @@ export class EventsComponent implements OnInit {
 
   public events: Event[] = [];
   public filteredEvents: Event[] = [];
-  private _listFilter: string = '';
-  public displayImage: boolean = true;
+  private _listFilter = '';
+  public displayImage = true;
 
   public changeImageStatus(): void {
     this.displayImage = !this.displayImage;
   }
 
-  public get listFilter(): string {
+  public get listFilter() {
     return this._listFilter;
   }
 
