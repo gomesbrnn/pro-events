@@ -15,6 +15,7 @@
       <tr>
         <th>
           <button type="button" class="btn btn-outline-light btn-sm" (click)="changeImageStatus()">
+            <i class="{{!displayImage ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
             {{!displayImage ? 'show' : 'hide'}}</button>
         </th>
         <th>#</th>
@@ -29,7 +30,7 @@
     <tbody *ngIf="events && events.length">
       <tr *ngFor="let event of filteredEvents">
         <td>
-          <img [collapse]="displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
+          <img [collapse]="!displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
         </td>
         <td>{{event.id}}</td>
         <td>{{event.theme}}</td>
