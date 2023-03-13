@@ -16,7 +16,7 @@ export class EventsComponent implements OnInit {
   private _listFilter: string = '';
   public displayImage: boolean = true;
 
-  public changeImageStatus() {
+  public changeImageStatus(): void {
     this.displayImage = !this.displayImage;
   }
 
@@ -41,7 +41,7 @@ export class EventsComponent implements OnInit {
     )
   }
 
-  public getEvents() {
+  public getEvents(): void {
     this.eventService.getEvents().subscribe(
       response => {
         this.events = response;
