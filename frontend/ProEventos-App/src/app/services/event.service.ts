@@ -12,27 +12,27 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<Event[]> {
+  public getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.baseUrl)
   }
 
-  getEventsByTheme(theme: string): Observable<Event[]> {
+  public getEventsByTheme(theme: string): Observable<Event[]> {
     return this.http.get<Event[]>(this.baseUrl + `theme/${theme}`)
   }
 
-  getEventById(id: number): Observable<Event> {
+  public getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(this.baseUrl + `${id}`)
   }
 
-  createEvent(event: Event): Observable<Event> {
+  public createEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(this.baseUrl, event)
   }
 
-  updateEvent(event: Event, eventId: number): Observable<Event> {
+  public updateEvent(event: Event, eventId: number): Observable<Event> {
     return this.http.put<Event>(this.baseUrl + `${eventId}`, event)
   }
 
-  deleteEvent(eventId: number): Observable<Event> {
+  public deleteEvent(eventId: number): Observable<Event> {
     return this.http.delete<Event>(this.baseUrl + `${eventId}`)
   }
 }
