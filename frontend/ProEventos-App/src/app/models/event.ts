@@ -1,7 +1,7 @@
 export interface Event {
   id: number;
   city: string;
-  date: string;
+  date?: string;
   theme: string;
   amountPeople: number;
   lot: string;
