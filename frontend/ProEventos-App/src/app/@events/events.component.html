@@ -27,16 +27,16 @@
       </tr>
     </thead>
     <tbody *ngIf="events && events.length">
-      <tr *ngFor="let evento of filteredEvents">
+      <tr *ngFor="let event of filteredEvents">
         <td>
-          <img [collapse]="displayImage" [isAnimated]="true" src="/assets/{{evento.imageURL}}">
+          <img [collapse]="displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
         </td>
-        <td>{{evento.id}}</td>
-        <td>{{evento.theme}}</td>
-        <td>{{evento.city}}</td>
-        <td>{{evento.date}}</td>
-        <td>{{evento.amountPeople}}</td>
-        <td>{{evento.lot}}</td>
+        <td>{{event.id}}</td>
+        <td>{{event.theme}}</td>
+        <td>{{event.city}}</td>
+        <td>{{event.date}}</td>
+        <td>{{event.amountPeople}}</td>
+        <td>{{event.lots}}</td>
         <td>
           <a class="btn btn-outline-success btn-sm" href="">Update</a>
           <a class="btn btn-outline-danger btn-sm" href="">Delete</a>
