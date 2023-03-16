@@ -6,6 +6,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './@events/events.component';
@@ -28,9 +29,10 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    FormsModule
+    ModalModule.forRoot()
   ],
   providers: [
     EventService,
