@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +32,6 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
   ],
   providers: [
     EventService,
-    { provide: LOCALE_ID, useValue: 'pt-br' }
   ],
   bootstrap: [AppComponent]
 })
