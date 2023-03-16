@@ -43,7 +43,7 @@
             <i class="fa fa-edit"></i>
             Update
           </a>
-          <a class="btn btn-danger btn-sm" href="">
+          <a class="btn btn-danger btn-sm" (click)="openModal(template)">
             <i class="fa fa-trash"></i>
             Delete
           </a>
@@ -58,5 +58,13 @@
       </tr>
     </tfoot>
   </table>
+
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+    </div>
+  </ng-template>
 
 </div>
