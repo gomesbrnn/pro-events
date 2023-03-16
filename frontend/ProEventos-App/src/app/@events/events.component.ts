@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Event } from '../models/event';
 import { EventService } from '../services/event.service';
 
@@ -9,8 +10,9 @@ import { EventService } from '../services/event.service';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private modalService: BsModalService) { }
 
+  modalRef?: BsModalRef;
   public events: Event[] = [];
   public filteredEvents: Event[] = [];
   private _listFilter = '';
@@ -51,6 +53,18 @@ export class EventsComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  public confirm(): void {
+    this.modalRef?.hide();
+  }
+
+  public decline(): void {
+    this.modalRef?.hide();
   }
 
   ngOnInit(): void {
