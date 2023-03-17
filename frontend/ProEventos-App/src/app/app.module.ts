@@ -21,6 +21,7 @@ import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TitleComponent } from './shared/title/title.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ContactsComponent } from './components/contacts/contacts.component';
     NavComponent,
     DateTimeFormatPipe,
     TitleComponent,
-    ContactsComponent
+    ContactsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
