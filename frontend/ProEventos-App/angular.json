@@ -39,7 +39,7 @@
             "styles": [
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/ngx-spinner/animations/ball-elastic-dots.css"
+              "node_modules/ngx-spinner/animations/ball-clip-rotate.css"
             ],
             "scripts": []
           },
@@ -108,7 +108,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-elastic-dots.css"
             ],
             "scripts": []
           }
