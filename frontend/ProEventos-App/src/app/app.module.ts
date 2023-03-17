@@ -13,9 +13,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { EventsComponent } from './@events/events.component';
-import { SpeakersComponent } from './speakers/speakers.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { EventsComponent } from './components/events/events.component';
+import { SpeakersComponent } from './components/speakers/speakers.component';
 
 import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
