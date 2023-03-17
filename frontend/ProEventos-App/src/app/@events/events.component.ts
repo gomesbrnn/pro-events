@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Event } from '../models/event';
@@ -10,7 +11,11 @@ import { EventService } from '../services/event.service';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(private eventService: EventService, private modalService: BsModalService) { }
+  constructor(
+    private eventService: EventService,
+    private modalService: BsModalService,
+    private toastr: ToastrService
+  ) { }
 
   modalRef?: BsModalRef;
   public events: Event[] = [];
@@ -61,6 +66,7 @@ export class EventsComponent implements OnInit {
 
   public confirm(): void {
     this.modalRef?.hide();
+    this.toastr.success('Deleted Successfully!');
   }
 
   public decline(): void {
