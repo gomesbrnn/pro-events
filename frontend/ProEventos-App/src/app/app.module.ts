@@ -16,13 +16,13 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { EventsComponent } from './components/events/events.component';
 import { SpeakersComponent } from './components/speakers/speakers.component';
-
-import { EventService } from './services/event.service';
-import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TitleComponent } from './shared/title/title.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
+import { EventService } from './services/event.service';
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 
 @NgModule({
   declarations: [
