@@ -19,6 +19,7 @@ import { SpeakersComponent } from './speakers/speakers.component';
 
 import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
+import { TitleComponent } from './shared/title/title.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
     EventsComponent,
     SpeakersComponent,
     NavComponent,
-    DateTimeFormatPipe
+    DateTimeFormatPipe,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
