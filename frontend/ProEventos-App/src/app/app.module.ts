@@ -20,6 +20,7 @@ import { SpeakersComponent } from './components/speakers/speakers.component';
 import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TitleComponent } from './shared/title/title.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TitleComponent } from './shared/title/title.component';
     SpeakersComponent,
     NavComponent,
     DateTimeFormatPipe,
-    TitleComponent
+    TitleComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
