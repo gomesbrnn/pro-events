@@ -44,7 +44,7 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
       progressBar: true,
     }),
     NgxSpinnerModule.forRoot({
-
+      type: 'ball-elastic-dots'
     })
   ],
   providers: [
