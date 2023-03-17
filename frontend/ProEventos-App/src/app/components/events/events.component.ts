@@ -65,7 +65,7 @@ export class EventsComponent implements OnInit {
     )
   }
 
-  public openModal(template: TemplateRef<any>): void {
+  public openModal(template: TemplateRef<void>): void {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
