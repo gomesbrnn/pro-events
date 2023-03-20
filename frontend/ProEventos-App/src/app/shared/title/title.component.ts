@@ -9,6 +9,6 @@ export class TitleComponent implements OnInit {
   @Input() title = ''
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    ''
   }
 }
