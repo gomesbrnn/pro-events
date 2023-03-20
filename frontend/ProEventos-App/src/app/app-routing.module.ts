@@ -7,7 +7,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SpeakersComponent } from './components/speakers/speakers.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/events', pathMatch: 'full', data: { title: 'Home' } },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full', data: { title: 'Home' } },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full', data: { title: 'Home' } },
   { path: 'events', component: EventsComponent, data: { title: 'Events' } },
   { path: 'speakers', component: SpeakersComponent, data: { title: 'Speakers' } },
   { path: 'contacts', component: ContactsComponent, data: { title: 'Contacts' } },
