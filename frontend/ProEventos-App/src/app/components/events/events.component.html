@@ -1,69 +1,65 @@
-<br>
-<div class="container">
-  <app-title [title]="'Events'"></app-title>
+<app-title [title]="'Events'"></app-title>
 
-  <form action="" class="form-inline">
-    <div class="form-group mb-2">
-      <label class="mr-2">Filter: </label>
-      <input type="text" class="form-control mr-2" placeholder="Search" [(ngModel)]="listFilter" name="filter">
-    </div>
-  </form>
+<form action="" class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2">Filter: </label>
+    <input type="text" class="form-control mr-2" placeholder="Search" [(ngModel)]="listFilter" name="filter">
+  </div>
+</form>
 
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>
-          <button type="button" class="btn btn-outline-light btn-sm" (click)="changeImageStatus()">
-            <i class="{{!displayImage ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
-            {{!displayImage ? 'show' : 'hide'}}</button>
-        </th>
-        <th>#</th>
-        <th>Theme</th>
-        <th>City</th>
-        <th>Date</th>
-        <th>Amount People</th>
-        <th>Lot</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="events && events.length">
-      <tr *ngFor="let event of filteredEvents">
-        <td>
-          <img [collapse]="!displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
-        </td>
-        <td>{{event.id}}</td>
-        <td>{{event.theme}}</td>
-        <td>{{event.city}}</td>
-        <td>{{event.date | dateTimeFormatPipe}}</td>
-        <td>{{event.amountPeople}}</td>
-        <td>{{event.lots[0].name}}</td>
-        <td>
-          <a class="btn btn-success btn-sm" href="">
-            <i class="fa fa-edit"></i>
-            Update
-          </a>
-          <a class="btn btn-danger btn-sm" (click)="openModal(template)">
-            <i class="fa fa-trash"></i>
-            Delete
-          </a>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot *ngIf="!events.length">
-      <tr>
-        <td colspan="8" class="text-center">
-          <h4>No events found!</h4>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="changeImageStatus()">
+          <i class="{{!displayImage ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+          {{!displayImage ? 'show' : 'hide'}}</button>
+      </th>
+      <th>#</th>
+      <th>Theme</th>
+      <th>City</th>
+      <th>Date</th>
+      <th>Amount People</th>
+      <th>Lot</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="events && events.length">
+    <tr *ngFor="let event of filteredEvents">
+      <td>
+        <img [collapse]="!displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
+      </td>
+      <td>{{event.id}}</td>
+      <td>{{event.theme}}</td>
+      <td>{{event.city}}</td>
+      <td>{{event.date | dateTimeFormatPipe}}</td>
+      <td>{{event.amountPeople}}</td>
+      <td>{{event.lots[0].name}}</td>
+      <td>
+        <a class="btn btn-success btn-sm" href="">
+          <i class="fa fa-edit"></i>
+          Update
+        </a>
+        <a class="btn btn-danger btn-sm" (click)="openModal(template)">
+          <i class="fa fa-trash"></i>
+          Delete
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!events.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>No events found!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
 
-  <ng-template #template>
-    <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()">No</button>
-    </div>
-  </ng-template>
-
-</div>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+  </div>
+</ng-template>
