@@ -1,46 +1,57 @@
 <app-title [title]="'Events'" [iconClass]="'fa fa-calendar-alt'" [listButton]="true"></app-title>
 
 <div class="card rounded shadow-sm p-3">
-  <form action="" class="form-inline">
-    <div class="form-group mb-2">
-      <label class="mr-2">Filter: </label>
-      <input type="text" class="form-control mr-2" placeholder="Search" [(ngModel)]="listFilter" name="filter">
+
+  <div class="d-flex">
+
+    <div class="flex-fill pr-3">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Filter: </div>
+        </div>
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="listFilter" name="filter">
+      </div>
     </div>
-  </form>
+
+    <div>
+      <a class="d-flex btn btn-outline-dark" href="#">
+        <i class="fa fa-plus-circle my-1"></i>
+        <b class="ml-1 d-none d-sm-block">New</b>
+      </a>
+    </div>
+
+  </div>
 
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>
+        <th class="d-none d-md-table-cell">
           <button type="button" class="btn btn-outline-light btn-sm" (click)="changeImageStatus()">
             <i class="{{!displayImage ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
             {{!displayImage ? 'show' : 'hide'}}</button>
         </th>
         <th>#</th>
         <th>Theme</th>
-        <th>City</th>
+        <th class="d-none d-md-table-cell">City</th>
         <th>Date</th>
-        <th>Amount People</th>
-        <th>Lot</th>
+        <th class="d-none d-md-table-cell">Amount People</th>
+        <th class="d-none d-md-table-cell">Lot</th>
         <th>Options</th>
       </tr>
     </thead>
+
     <tbody *ngIf="events && events.length">
       <tr *ngFor="let event of filteredEvents">
-        <td>
+        <td class="d-none d-md-table-cell">
           <img [collapse]="!displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
         </td>
         <td>{{event.id}}</td>
         <td>{{event.theme}}</td>
-        <td>{{event.city}}</td>
+        <td class="d-none d-md-table-cell">{{event.city}}</td>
         <td>{{event.date | dateTimeFormatPipe}}</td>
-        <td>{{event.amountPeople}}</td>
-        <td>{{event.lots[0].name}}</td>
+        <td class="d-none d-md-table-cell">{{event.amountPeople}}</td>
+        <td class="d-none d-md-table-cell">{{event.lots[0].name}}</td>
         <td>
-          <a class="btn btn-success btn-sm" href="">
-            <i class="fa fa-edit"></i>
-            Update
-          </a>
           <a class="btn btn-danger btn-sm" (click)="openModal(template)">
             <i class="fa fa-trash"></i>
             Delete
@@ -48,6 +59,7 @@
         </td>
       </tr>
     </tbody>
+
     <tfoot *ngIf="!events.length">
       <tr>
         <td colspan="8" class="text-center">
@@ -56,6 +68,7 @@
       </tr>
     </tfoot>
   </table>
+
 </div>
 
 <ng-template #template>
