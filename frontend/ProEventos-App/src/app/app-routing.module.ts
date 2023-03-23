@@ -1,15 +1,18 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactsComponent } from './components/contacts/contacts.component';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EventDetailComponent } from './components/events/event-detail/event-detail.component';
-import { EventListComponent } from './components/events/event-list/event-list.component';
-import { EventsComponent } from './components/events/events.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { SpeakersComponent } from './components/speakers/speakers.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+
+import { EventsComponent } from './components/events/events.component';
+import { EventListComponent } from './components/events/event-list/event-list.component';
+import { EventDetailComponent } from './components/events/event-detail/event-detail.component';
+
+import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
-import { UserComponent } from './components/user/user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
