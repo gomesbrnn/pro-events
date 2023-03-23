@@ -39,7 +39,8 @@
         </thead>
 
         <tbody *ngIf="events && events.length">
-            <tr *ngFor="let event of filteredEvents">
+            <tr class="events" *ngFor="let event of filteredEvents" (click)="eventDetail(event.id)">
+
                 <td class="d-none d-md-table-cell">
                     <img [collapse]="!displayImage" [isAnimated]="true" src="/assets/{{event.imageURL}}">
                 </td>
@@ -55,6 +56,7 @@
                         Delete
                     </a>
                 </td>
+
             </tr>
         </tbody>
 
