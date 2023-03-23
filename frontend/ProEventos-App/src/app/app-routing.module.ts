@@ -11,9 +11,6 @@ import { LoginComponent } from './components/user/login/login.component';
 import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full', data: { title: 'Home' } },
-  { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
-  { path: 'events', redirectTo: 'events/list' },
   {
     path: 'events', component: EventsComponent, data: { title: 'Events' },
     children: [
@@ -28,10 +25,12 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  { path: 'speakers', component: SpeakersComponent, data: { title: 'Speakers' } },
-  { path: 'contacts', component: ContactsComponent, data: { title: 'Contacts' } },
-  { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
-  { path: '**', redirectTo: 'dashboard', pathMatch: 'full', data: { title: 'Home' } }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'speakers', component: SpeakersComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({
