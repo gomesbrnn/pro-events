@@ -27,11 +27,11 @@
             Account
           </a>
           <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" [routerLink]="['user/profile']">
+            <a class="dropdown-item" [routerLink]="['/user/profile']">
               Profile
             </a>
             <div role="separator" class="divider"></div>
-            <a class="dropdown-item">
+            <a class="dropdown-item" [routerLink]="['/user/login']">
               Logout
             </a>
           </div>
