@@ -25,6 +25,7 @@ import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { EventDetailComponent } from './components/events/event-detail/event-detail.component';
 import { EventListComponent } from './components/events/event-list/event-list.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EventListComponent } from './components/events/event-list/event-list.co
     DashboardComponent,
     ProfileComponent,
     EventDetailComponent,
-    EventListComponent
+    EventListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
