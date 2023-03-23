@@ -26,7 +26,7 @@ import { EventDetailComponent } from './components/events/event-detail/event-det
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 import { EventService } from './services/event.service';
 

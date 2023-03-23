@@ -12,7 +12,7 @@ import { EventDetailComponent } from './components/events/event-detail/event-det
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -27,13 +27,13 @@ const routes: Routes = [
     path: 'user', component: UserComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'registration', component: RegistrationComponent }
+      { path: 'registration', component: RegistrationComponent },
+      { path: 'profile', component: ProfileComponent }
     ]
   },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'speakers', component: SpeakersComponent },
   { path: 'contacts', component: ContactsComponent },
-  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
