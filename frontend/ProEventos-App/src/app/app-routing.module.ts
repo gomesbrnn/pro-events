@@ -10,6 +10,7 @@ import { SpeakersComponent } from './components/speakers/speakers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', data: { title: 'Home' } },
+  { path: 'events', redirectTo: 'events/list' },
   {
     path: 'events', component: EventsComponent, data: { title: 'Events' },
     children: [
