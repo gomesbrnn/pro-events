@@ -27,6 +27,7 @@ import { EventDetailComponent } from './components/events/event-detail/event-det
 import { EventListComponent } from './components/events/event-list/event-list.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoginComponent } from './components/user/login/login.component';
     EventDetailComponent,
     EventListComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
