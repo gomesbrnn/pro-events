@@ -56,7 +56,7 @@ export class EventListComponent {
       response => {
         this.events = response;
         this.filteredEvents = response;
-        setTimeout(() => { this.spinner.hide(); }, 1000);
+        setTimeout(() => { this.spinner.hide(); }, 500);
       },
       error => {
         this.spinner.hide();
