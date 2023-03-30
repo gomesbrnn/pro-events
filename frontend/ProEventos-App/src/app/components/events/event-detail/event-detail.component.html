@@ -1,34 +1,34 @@
 <div class="card rounded shadow-sm">
-    <form>
+    <form [formGroup]="eventDetailsForm">
         <div class="p-3">
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label>Theme</label>
-                    <input type="text" class="form-control" placeholder="Insira o Tema">
+                    <input type="text" class="form-control" formControlName="theme" placeholder="">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-8">
                     <label>Location</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" formControlName="city" placeholder="">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Date and Time</label>
-                    <input type="datetime" class="form-control" placeholder="">
+                    <input type="datetime" class="form-control" formControlName="date" placeholder="01/01/2001 07:30">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label>Amt People</label>
-                    <input type="text" class="form-control is-invalid" placeholder="">
+                    <input type="text" class="form-control is-invalid" formControlName="amountPeople" placeholder="">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Phone</label>
-                    <input type="text" class="form-control" placeholder="(000) 90000-0000">
+                    <input type="text" class="form-control" formControlName="phone" placeholder="(000) 90000-0000">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="e-mail">
+                    <input type="text" class="form-control" formControlName="email" placeholder="e-mail">
                 </div>
             </div>
         </div>
