@@ -4,36 +4,49 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label>Theme</label>
-                    <input type="text" class="form-control" formControlName="theme" placeholder="">
+                    <input type="text" class="form-control" formControlName="theme" placeholder=""
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('theme')?.errors &&  eventDetailsForm.get('theme')?.touched}">
+                    <div class="invalid-feedback">Theme is required.</div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-8">
                     <label>Location</label>
-                    <input type="text" class="form-control" formControlName="city" placeholder="">
+                    <input type="text" class="form-control" formControlName="city" placeholder=""
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('city')?.errors &&  eventDetailsForm.get('city')?.touched}">
+                    <div class="invalid-feedback">Location is required.</div>
                 </div>
                 <div class="form-group col-md-4">
                     <label>Date and Time</label>
-                    <input type="datetime" class="form-control" formControlName="date" placeholder="01/01/2001 07:30">
+                    <input type="datetime" class="form-control" formControlName="date" placeholder="01/01/2001 07:30"
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('date')?.errors &&  eventDetailsForm.get('date')?.touched}">
+                    <div class="invalid-feedback">Date and Time is required.</div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label>Amt People</label>
-                    <input type="text" class="form-control is-invalid" formControlName="amountPeople" placeholder="">
+                    <input type="text" class="form-control is-invalid" formControlName="amountPeople" placeholder=""
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('amountPeople')?.errors &&  eventDetailsForm.get('amountPeople')?.touched}">
+                    <div class="invalid-feedback">Amt People is required.</div>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Phone</label>
-                    <input type="text" class="form-control" formControlName="phone" placeholder="(000) 90000-0000">
+                    <input type="text" class="form-control" formControlName="phone" placeholder="(000) 90000-0000"
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('phone')?.errors &&  eventDetailsForm.get('phone')?.touched}">
+                    <div class="invalid-feedback">Phone is required.</div>
                 </div>
                 <div class="form-group col-md-4">
                     <label>Email</label>
-                    <input type="text" class="form-control" formControlName="email" placeholder="e-mail">
+                    <input type="text" class="form-control" formControlName="email" placeholder="e-mail"
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('email')?.errors &&  eventDetailsForm.get('email')?.touched}">
+                    <div class="invalid-feedback">Email is required.</div>
                 </div>
-
                 <div class="form-group col-md-4">
                     <label>Photo</label>
-                    <input type="text" class="form-control" formControlName="imageURL" placeholder="image">
+                    <input type="text" class="form-control" formControlName="imageURL" placeholder="image"
+                        [ngClass]="{'is-invalid': eventDetailsForm.get('imageURL')?.errors &&  eventDetailsForm.get('imageURL')?.touched}">
+                    <div class="invalid-feedback">Photo is required.</div>
                 </div>
             </div>
         </div>

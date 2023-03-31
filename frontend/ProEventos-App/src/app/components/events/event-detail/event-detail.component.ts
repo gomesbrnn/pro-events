@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,16 +6,42 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './event-detail.component.html',
   styleUrls: ['./event-detail.component.scss']
 })
-export class EventDetailComponent {
+export class EventDetailComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   eventDetailsForm = this.formBuilder.group({
-    city: ['', Validators.required],
-    date: ['', Validators.required],
-    theme: ['', Validators.required],
-    amountPeople: [0, Validators.required],
-    imageURL: ['', Validators.required],
-    phone: ['', Validators.required],
-    email: ['', Validators.required]
+
+    theme: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(50)
+    ]],
+    city: ['', [
+      Validators.required
+    ]],
+    date: ['', [
+      Validators.required,
+    ]],
+    amountPeople: [0, [
+      Validators.required,
+      Validators.max(500)
+    ]],
+    phone: ['', [
+      Validators.required,
+      Validators.minLength(11),
+      Validators.maxLength(12)
+    ]],
+    email: ['', [
+      Validators.required,
+      Validators.email
+    ]],
+    imageURL: ['', [
+      Validators.required
+    ]]
+
   });
+
+  ngOnInit(): void {
+    this.eventDetailsForm
+  }
 }
