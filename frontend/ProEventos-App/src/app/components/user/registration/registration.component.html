@@ -8,37 +8,43 @@
     </div>
 
     <div class="col-md-6">
-
-        <form class="p-1">
+        <!-- <p>Form value: {{registrationForm.value | json}}</p>
+        <p>Form valid: {{registrationForm.status | json}}</p> -->
+        <form class="p-1" [formGroup]="registrationForm">
             <div class="pb-2 d-block d-md-none">
                 <h3 class="border-bottom">User registration</h3>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label>First name</label>
-                    <input type="text" class="form-control" placeholder="Insert your first name" />
+                    <input type="text" class="form-control" placeholder="Insert your first name"
+                        formControlName="firstName" />
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Last name</label>
-                    <input type="text" class="form-control" placeholder="Insert your last name" />
+                    <input type="text" class="form-control" placeholder="Insert your last name"
+                        formControlName="lastName" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Email:</label>
-                <input class="form-control" type="text" placeholder="Insert your last email" />
+                <input class="form-control" type="text" placeholder="Insert your last email" formControlName="email" />
             </div>
             <div class="form-group">
                 <label for="">User:</label>
-                <input class="form-control" type="text" placeholder="Insert your user name" />
+                <input class="form-control" type="text" placeholder="Insert your user name"
+                    formControlName="username" />
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="">Password:</label>
-                    <input class="form-control" type="password" placeholder="Insert your password" />
+                    <input class="form-control" type="password" placeholder="Insert your password"
+                        formControlName="password" />
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="">Confirm password:</label>
-                    <input class="form-control" type="password" placeholder="Confirm the password" />
+                    <input class="form-control" type="password" placeholder="Confirm the password"
+                        formControlName="confirmPassword" />
                 </div>
             </div>
             <div class="form-row p-1 mb-3">
@@ -49,7 +55,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
-                    <button class="btn btn-lg btn-success btn-block px-5">
+                    <button class="btn btn-lg btn-success btn-block px-5" [disabled]="!registrationForm.valid">
                         Register
                     </button>
                 </div>
