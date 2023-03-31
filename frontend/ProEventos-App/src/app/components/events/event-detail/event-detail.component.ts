@@ -9,6 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class EventDetailComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
+  get form() {
+    return this.eventDetailsForm.controls;
+  }
+
   eventDetailsForm = this.formBuilder.group({
 
     theme: ['', [
@@ -24,6 +28,7 @@ export class EventDetailComponent implements OnInit {
     ]],
     amountPeople: [0, [
       Validators.required,
+      Validators.min(1),
       Validators.max(500)
     ]],
     phone: ['', [
