@@ -13,6 +13,10 @@ export class EventDetailComponent implements OnInit {
     return this.eventDetailsForm.controls;
   }
 
+  public resetForm(): void {
+    this.eventDetailsForm.reset();
+  }
+
   eventDetailsForm = this.formBuilder.group({
 
     theme: ['', [
