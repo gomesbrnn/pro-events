@@ -1,7 +1,9 @@
 <div class="card rounded shadow-sm">
     <form [formGroup]="eventDetailsForm">
-        <div class="p-3">
 
+        <div class="p-3">
+            <!-- <p>Form value:{{eventDetailsForm.value | json}}</p>
+            <p>Form valid:{{eventDetailsForm.status | json}}</p> -->
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label>Theme</label>
@@ -106,7 +108,7 @@
                 <button class="btn btn-outline-secondary mr-auto border">
                     Cancel changes
                 </button>
-                <button class="btn btn-success">
+                <button class="btn btn-success" [disabled]="!eventDetailsForm.valid">
                     <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
                     Save changes
                 </button>
