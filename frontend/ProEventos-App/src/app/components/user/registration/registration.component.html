@@ -8,51 +8,99 @@
     </div>
 
     <div class="col-md-6">
-        <!-- <p>Form value: {{registrationForm.value | json}}</p>
-        <p>Form valid: {{registrationForm.status | json}}</p> -->
+
         <form class="p-1" [formGroup]="registrationForm">
             <div class="pb-2 d-block d-md-none">
                 <h3 class="border-bottom">User registration</h3>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label>First name</label>
                     <input type="text" class="form-control" placeholder="Insert your first name"
-                        formControlName="firstName" />
+                        formControlName="firstName"
+                        [ngClass]="{'is-invalid': form.firstName.errors && form.firstName.touched}" />
+
+                    <div class="invalid-feedback" *ngIf="form.firstName.errors?.required">
+                        First name is required.
+                    </div>
                 </div>
+
                 <div class="form-group col-sm-6">
                     <label>Last name</label>
                     <input type="text" class="form-control" placeholder="Insert your last name"
-                        formControlName="lastName" />
+                        formControlName="lastName"
+                        [ngClass]="{'is-invalid': form.lastName.errors && form.lastName.touched}" />
+
+                    <div class="invalid-feedback" *ngIf="form.lastName.errors?.required">
+                        Last name is required.
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="">Email:</label>
-                <input class="form-control" type="text" placeholder="Insert your last email" formControlName="email" />
+                <input class="form-control" type="text" placeholder="Insert your last email" formControlName="email"
+                    [ngClass]="{'is-invalid': form.email.errors && form.email.touched}" />
+
+                <div class="invalid-feedback" *ngIf="form.email.errors?.required">
+                    Email is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="form.email.errors?.email">
+                    This email is invalid.
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="">User:</label>
-                <input class="form-control" type="text" placeholder="Insert your user name"
-                    formControlName="username" />
+                <input class="form-control" type="text" placeholder="Insert your user name" formControlName="username"
+                    [ngClass]="{'is-invalid': form.username.errors && form.username.touched}" />
+
+                <div class="invalid-feedback" *ngIf="form.username.errors?.required">
+                    Username is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="form.username.errors?.minLenght">
+                    Enter at least 4 characters.
+                </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="">Password:</label>
                     <input class="form-control" type="password" placeholder="Insert your password"
-                        formControlName="password" />
+                        formControlName="password"
+                        [ngClass]="{'is-invalid': form.password.errors && form.password.touched}" />
+
+                    <div class="invalid-feedback" *ngIf="form.password.errors?.required">
+                        Password is required.
+                    </div>
+                    <div class="invalid-feedback" *ngIf="form.password.errors?.min">
+                        Enter at least 8 characters.
+                    </div>
                 </div>
+
                 <div class="form-group col-sm-6">
                     <label for="">Confirm password:</label>
                     <input class="form-control" type="password" placeholder="Confirm the password"
-                        formControlName="confirmPassword" />
+                        formControlName="confirmPassword"
+                        [ngClass]="{'is-invalid': form.confirmPassword.errors && form.confirmPassword.touched}" />
+
+                    <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.required">
+                        Confirm password is required.
+                    </div>
+                    <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.min">
+                        Enter at least 8 characters.
+                    </div>
                 </div>
             </div>
+
             <div class="form-row p-1 mb-3">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label">I agree with the <a href="#">Terms of Use</a>.</label>
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-12">
                     <button class="btn btn-lg btn-success btn-block px-5" [disabled]="!registrationForm.valid">
@@ -60,6 +108,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-12">
                     <a class="btn btn-link btn-block" [routerLink]="['/user/login']">

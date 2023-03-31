@@ -9,6 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class RegistrationComponent {
   constructor(private formbuilder: FormBuilder) { }
 
+  get form() {
+    return this.registrationForm.controls;
+  }
+
   registrationForm = this.formbuilder.group({
 
     firstName: ['', [
