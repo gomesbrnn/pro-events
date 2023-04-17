@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
+import { FieldValidator } from 'src/app/helpers/field-validator';
 
 @Component({
   selector: 'app-registration',
@@ -8,6 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrationComponent {
   constructor(private formbuilder: FormBuilder) { }
+
+  formOptions: AbstractControlOptions = {
+    validators: FieldValidator.mustMatch('password', 'confirmPassword')
+  }
 
   get form() {
     return this.registrationForm.controls;
@@ -31,12 +36,11 @@ export class RegistrationComponent {
     ]],
     password: ['', [
       Validators.required,
-      Validators.min(8)
+      Validators.minLength(8)
     ]],
     confirmPassword: ['', [
       Validators.required,
-      Validators.min(8)
-    ]],
-
-  })
+      Validators.minLength(8)
+    ]]
+  }, this.formOptions)
 }

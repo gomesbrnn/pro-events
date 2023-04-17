@@ -74,7 +74,7 @@
                     <div class="invalid-feedback" *ngIf="form.password.errors?.required">
                         Password is required.
                     </div>
-                    <div class="invalid-feedback" *ngIf="form.password.errors?.min">
+                    <div class="invalid-feedback" *ngIf="form.password.errors?.minlength">
                         Enter at least 8 characters.
                     </div>
                 </div>
@@ -88,8 +88,11 @@
                     <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.required">
                         Confirm password is required.
                     </div>
-                    <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.min">
+                    <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.minlength">
                         Enter at least 8 characters.
+                    </div>
+                    <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.passMustMatch">
+                        The passwords didn't match.
                     </div>
                 </div>
             </div>
