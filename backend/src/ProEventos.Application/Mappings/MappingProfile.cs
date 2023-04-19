@@ -9,6 +9,8 @@ namespace ProEventos.Application.Mappings
         public MappingProfile()
         {
             CreateMap<Event, ReadEventDTO>().ReverseMap();
+            CreateMap<Event, CreateEventDTO>().ReverseMap();
+            CreateMap<Event, UpdateEventDTO>().ReverseMap();
         }
     }
 }
