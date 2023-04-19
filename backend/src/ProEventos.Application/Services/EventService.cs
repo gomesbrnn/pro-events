@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using AutoMapper;
+using ProEventos.Application.Dtos.Event;
 using ProEventos.Application.Interfaces;
 using ProEventos.Domain.Models;
 using ProEventos.Persistence.Interfaces;
@@ -8,73 +10,78 @@ namespace ProEventos.Application.Services
 {
     public class EventService : IEventService
     {
-        IGeneralRepository _generalRepository;
-        IEventRepository _eventRepository;
-        public EventService(IGeneralRepository generalRepository, IEventRepository eventRepository)
+        private readonly IGeneralRepository _generalRepository;
+        private readonly IEventRepository _eventRepository;
+        private readonly IMapper _mapper;
+
+        public EventService(IGeneralRepository generalRepository, IEventRepository eventRepository, IMapper mapper)
         {
             _generalRepository = generalRepository;
             _eventRepository = eventRepository;
+            _mapper = mapper;
         }
 
-        public async Task<Event[]> GetAllEventsAsync(bool includeSpeakers = false)
+        public async Task<ReadEventDTO[]> GetAllEventsAsync(bool includeSpeakers = false)
         {
             var events = await _eventRepository.GetAllEventsAsync(includeSpeakers);
 
             if (events is null) return null;
 
-            return events;
+            return _mapper.Map<ReadEventDTO[]>(events);
         }
 
-        public async Task<Event[]> GetAllEventsByThemeAsync(string theme, bool includeSpeakers = false)
+        public async Task<ReadEventDTO[]> GetAllEventsByThemeAsync(string theme, bool includeSpeakers = false)
         {
             var events = await _eventRepository.GetAllEventsByThemeAsync(theme, includeSpeakers);
 
             if (events is null) return null;
 
-            return events;
+            return _mapper.Map<ReadEventDTO[]>(events);
         }
 
-        public async Task<Event> GetEventByIdAsync(int eventId, bool includeSpeakers = false)
+        public async Task<ReadEventDTO> GetEventByIdAsync(int eventId, bool includeSpeakers = false)
         {
             var @event = await _eventRepository.GetEventByIdAsync(eventId, includeSpeakers);
 
             if (@event is null) return null;
 
-            return @event;
+            return _mapper.Map<ReadEventDTO>(@event);
         }
 
-        public async Task<Event> AddEvent(Event model)
+        public async Task<ReadEventDTO> AddEvent(CreateEventDTO eventDTO)
         {
-            _generalRepository.Add<Event>(model);
+            var eventPersist = _mapper.Map<Event>(eventDTO);
+
+            _generalRepository.Add<Event>(eventPersist);
 
             if (!await _generalRepository.SaveChangesAsync()) return null;
 
-            return model;
+            return _mapper.Map<ReadEventDTO>(eventPersist);
         }
 
-        public async Task<Event> UpdateEvent(int eventId, Event model)
+        public async Task<ReadEventDTO> UpdateEvent(int eventId, UpdateEventDTO eventDTO)
         {
-            var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
+            var eventExists = await _eventRepository.GetEventByIdAsync(eventId, false);
 
-            if (@event is null) return null;
+            if (eventExists is null) return null;
 
-            model.Id = eventId;
-            _generalRepository.Update(model);
+            _mapper.Map(eventDTO, eventExists);
+            _generalRepository.Update<Event>(eventExists);
 
             if (!await _generalRepository.SaveChangesAsync()) return null;
 
-            return model;
+            return _mapper.Map<ReadEventDTO>(eventExists);
         }
 
-        public async Task<Event> DeleteEvent(int eventId)
+        public async Task<ReadEventDTO> DeleteEvent(int eventId)
         {
-            var @event = await _eventRepository.GetEventByIdAsync(eventId, false);
+            var eventExists = await _eventRepository.GetEventByIdAsync(eventId, false);
 
-            if (@event is null) return null;
+            if (eventExists is null) return null;
 
-            await _eventRepository.DeleteEventById(@event.Id);
+            await _eventRepository.DeleteEventById(eventExists.Id);
 
-            return @event;
+            return _mapper.Map<ReadEventDTO>(eventExists);
         }
     }
 }
