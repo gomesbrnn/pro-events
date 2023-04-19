@@ -1,8 +1,8 @@
 using AutoMapper;
-using ProEventos.API.Dtos.Event;
+using ProEventos.Application.Dtos.Event;
 using ProEventos.Domain.Models;
 
-namespace ProEventos.API.Mappings
+namespace ProEventos.Application.Mappings
 {
     public class MappingProfile : Profile
     {

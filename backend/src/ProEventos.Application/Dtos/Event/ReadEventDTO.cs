@@ -1,4 +1,4 @@
-namespace ProEventos.API.Dtos.Event
+namespace ProEventos.Application.Dtos.Event
 {
     public class ReadEventDTO
     {
