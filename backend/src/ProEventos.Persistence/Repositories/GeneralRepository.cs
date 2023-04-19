@@ -19,7 +19,6 @@ namespace ProEventos.Persistence.Repositories
         }
 
         public void Update<T>(T entity) where T : class
-
         {
             _context.Update(entity);
         }
