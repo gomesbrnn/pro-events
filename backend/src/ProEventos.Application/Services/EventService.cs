@@ -4,7 +4,7 @@ using ProEventos.Application.Interfaces;
 using ProEventos.Domain.Models;
 using ProEventos.Persistence.Interfaces;
 
-namespace ProEventos.Application
+namespace ProEventos.Application.Services
 {
     public class EventService : IEventService
     {
