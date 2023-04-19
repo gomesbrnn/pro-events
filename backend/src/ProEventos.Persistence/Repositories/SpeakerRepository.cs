@@ -5,7 +5,7 @@ using ProEventos.Domain.Models;
 using ProEventos.Persistence.Context;
 using ProEventos.Persistence.Interfaces;
 
-namespace ProEventos.Persistence
+namespace ProEventos.Persistence.Repositories
 {
     public class SpeakerRepository : ISpeakerRepository
     {

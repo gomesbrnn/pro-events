@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using ProEventos.Persistence.Context;
 using ProEventos.Persistence.Interfaces;
 
-namespace ProEventos.Persistence
+namespace ProEventos.Persistence.Repositories
 {
     public class GeneralRepository : IGeneralRepository
     {

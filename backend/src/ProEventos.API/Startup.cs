@@ -8,9 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProEventos.Application.Interfaces;
 using ProEventos.Application.Services;
-using ProEventos.Persistence;
 using ProEventos.Persistence.Context;
 using ProEventos.Persistence.Interfaces;
+using ProEventos.Persistence.Repositories;
 
 namespace ProEventos.API
 {
