@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProEventos.Application.Dtos.Event;
 using ProEventos.Application.Interfaces;
-using ProEventos.Domain.Models;
 
 namespace ProEventos.API.Controllers
 {
@@ -86,11 +86,11 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Event model)
+        public async Task<IActionResult> Post(CreateEventDTO eventDTO)
         {
             try
             {
-                var @event = await _eventService.AddEvent(model);
+                var @event = await _eventService.AddEvent(eventDTO);
 
                 if (@event is null) return BadRequest();
 
@@ -109,11 +109,11 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Event model)
+        public async Task<IActionResult> Put(int id, UpdateEventDTO eventDTO)
         {
             try
             {
-                var @event = await _eventService.UpdateEvent(id, model);
+                var @event = await _eventService.UpdateEvent(id, eventDTO);
 
                 if (@event is null) return BadRequest();
 
