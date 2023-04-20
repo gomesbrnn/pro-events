@@ -46,7 +46,7 @@ namespace ProEventos.API.Controllers
             {
                 var @event = await _eventService.GetEventByIdAsync(id, true);
 
-                if (@event is null) return NotFound();
+                if (@event is null) return NoContent();
 
                 return Ok(@event);
             }
@@ -138,7 +138,7 @@ namespace ProEventos.API.Controllers
             {
                 var @event = await _eventService.DeleteEvent(id);
 
-                if (@event is null) return NotFound("The resquested event does not exist.");
+                if (@event is null) return NoContent();
 
                 return Ok(@event);
             }
