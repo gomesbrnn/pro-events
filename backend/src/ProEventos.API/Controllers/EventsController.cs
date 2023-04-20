@@ -7,6 +7,7 @@ using ProEventos.Application.Interfaces;
 namespace ProEventos.API.Controllers
 {
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/v1/events")]
     public class EventsController : ControllerBase
     {
