@@ -19,9 +19,9 @@ namespace ProEventos.Persistence.Repositories
         public async Task<Event[]> GetAllEventsAsync(bool includeSpeakers = false)
         {
             IQueryable<Event> query = _context.Events
+                                                       .Where(e => e.Status == true)
                                                        .Include(e => e.Lots)
                                                        .Include(e => e.SocialMedia)
-                                                       .Where(e => e.Status == true)
                                                        .OrderBy(e => e.Id)
                                                        .AsNoTracking();
 
@@ -38,9 +38,9 @@ namespace ProEventos.Persistence.Repositories
         public async Task<Event[]> GetAllEventsByThemeAsync(string theme, bool includeSpeakers = false)
         {
             IQueryable<Event> query = _context.Events
+                                                        .Where(e => e.Theme.ToLower() == theme.ToLower() && e.Status == true)
                                                         .Include(e => e.Lots)
                                                         .Include(e => e.SocialMedia)
-                                                        .Where(e => e.Theme.ToLower() == theme.ToLower() && e.Status == true)
                                                         .OrderBy(e => e.Id)
                                                         .AsNoTracking();
 
@@ -57,9 +57,9 @@ namespace ProEventos.Persistence.Repositories
         public async Task<Event> GetEventByIdAsync(int eventId, bool includeSpeakers = false)
         {
             IQueryable<Event> query = _context.Events
+                                                        .Where(e => e.Id == eventId && e.Status == true)
                                                         .Include(e => e.Lots)
                                                         .Include(e => e.SocialMedia)
-                                                        .Where(e => e.Id == eventId && e.Status == true)
                                                         .OrderBy(e => e.Id)
                                                         .AsNoTracking();
 
