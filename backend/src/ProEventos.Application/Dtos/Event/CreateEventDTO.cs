@@ -25,6 +25,7 @@ namespace ProEventos.Application.Dtos.Event
         [Range(1, int.MaxValue)]
         public int AmountPeople { get; set; }
 
+        [RegularExpression(@"/.*\.(gif|jpe?g|bmp|png)$/igm")]
         public string ImageURL { get; set; }
 
         [Required]
