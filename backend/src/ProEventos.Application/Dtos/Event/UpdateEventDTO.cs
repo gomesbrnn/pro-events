@@ -14,5 +14,9 @@ namespace ProEventos.Application.Dtos.Event
         public string ImageURL { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public IEnumerable<int> LotsId { get; set; }
+        public IEnumerable<int> SocialMediaId { get; set; }
+        public IEnumerable<int> SpeakersId { get; set; }
+        public bool Status { get; set; }
     }
 }
