@@ -27,6 +27,7 @@ namespace ProEventos.Application.Dtos.Event
 
         public string ImageURL { get; set; }
 
+        [Required]
         [Phone]
         public string Phone { get; set; }
 
