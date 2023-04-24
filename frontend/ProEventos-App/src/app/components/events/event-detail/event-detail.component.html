@@ -8,7 +8,7 @@
                 <div class="form-group col-md-12">
                     <label>Theme</label>
                     <input type="text" class="form-control" formControlName="theme" placeholder=""
-                        [ngClass]="{'is-invalid': form.theme.errors &&  form.theme.touched}">
+                        [ngClass]="inputValidator(form.theme)">
 
                     <div class="invalid-feedback" *ngIf="form.theme.errors?.required">
                         Theme is required.
@@ -26,7 +26,7 @@
                 <div class="form-group col-md-8">
                     <label>Location</label>
                     <input type="text" class="form-control" formControlName="city" placeholder=""
-                        [ngClass]="{'is-invalid': form.city.errors &&  form.city.touched}">
+                        [ngClass]="inputValidator(form.city)">
 
                     <div class="invalid-feedback" *ngIf="form.city.errors?.required">
                         Location is required.
@@ -36,7 +36,7 @@
                 <div class="form-group col-md-4">
                     <label>Date and Time</label>
                     <input type="datetime" class="form-control" formControlName="date" placeholder="01/01/2001 07:30"
-                        [ngClass]="{'is-invalid': form.date.errors &&  form.date.touched}">
+                        [ngClass]="inputValidator(form.date)">
 
                     <div class="invalid-feedback" *ngIf="form.date.errors?.required">
                         Date and Time is required.
@@ -48,7 +48,7 @@
                 <div class="form-group col-md-2">
                     <label>Amt People</label>
                     <input type="text" class="form-control is-invalid" formControlName="amountPeople" placeholder=""
-                        [ngClass]="{'is-invalid': form.amountPeople.errors &&  form.amountPeople.touched}">
+                        [ngClass]="inputValidator(form.amountPeople)">
 
                     <div class="invalid-feedback" *ngIf="form.amountPeople.errors?.required">
                         Amt People is required.
@@ -64,7 +64,7 @@
                 <div class="form-group col-md-2">
                     <label>Phone</label>
                     <input type="text" class="form-control" formControlName="phone" placeholder="(000) 90000-0000"
-                        [ngClass]="{'is-invalid': form.phone.errors &&  form.phone.touched}">
+                        [ngClass]="inputValidator(form.phone)">
 
                     <div class="invalid-feedback" *ngIf="form.phone.errors?.required">
                         Phone is required.
@@ -80,7 +80,7 @@
                 <div class="form-group col-md-4">
                     <label>Email</label>
                     <input type="text" class="form-control" formControlName="email" placeholder="e-mail"
-                        [ngClass]="{'is-invalid': form.email.errors &&  form.email.touched}">
+                        [ngClass]="inputValidator(form.email)">
 
                     <div class="invalid-feedback" *ngIf="form.email.errors?.required">
                         Email is required.
@@ -93,7 +93,7 @@
                 <div class="form-group col-md-4">
                     <label>Image</label>
                     <input type="text" class="form-control" formControlName="imageURL" placeholder="image"
-                        [ngClass]="{'is-invalid': form.imageURL.errors &&  form.imageURL.touched}">
+                        [ngClass]="inputValidator(form.imageURL)">
 
                     <div class="invalid-feedback" *ngIf="form.imageURL.errors?.required">
                         Image is required.

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event-detail',
@@ -49,6 +49,10 @@ export class EventDetailComponent implements OnInit {
     ]]
 
   });
+
+  inputValidator(formField: FormControl): any {
+    return { 'is-invalid': formField.errors && formField.touched }
+  }
 
   ngOnInit(): void {
     this.eventDetailsForm
