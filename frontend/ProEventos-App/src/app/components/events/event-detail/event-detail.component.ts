@@ -13,6 +13,16 @@ export class EventDetailComponent implements OnInit {
     return this.eventDetailsForm.controls;
   }
 
+  get bsConfig() {
+    return {
+      isAnimated: true,
+      adaptivePosition: true,
+      dateInputFormat: 'DD/MM/YYYY hh:mm a',
+      containerClass: 'theme-default',
+      showWeekNumbers: false
+    }
+  }
+
   public resetForm(): void {
     this.eventDetailsForm.reset();
   }

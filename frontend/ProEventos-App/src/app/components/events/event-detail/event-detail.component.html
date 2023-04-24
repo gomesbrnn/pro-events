@@ -35,8 +35,8 @@
 
                 <div class="form-group col-md-4">
                     <label>Date and Time</label>
-                    <input type="datetime" class="form-control" formControlName="date" placeholder="01/01/2001 07:30"
-                        [ngClass]="inputValidator(form.date)">
+                    <input type="datetime" bsDatepicker [bsConfig]="bsConfig" class="form-control"
+                        formControlName="date" [ngClass]="inputValidator(form.date)">
 
                     <div class="invalid-feedback" *ngIf="form.date.errors?.required">
                         Date and Time is required.
