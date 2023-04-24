@@ -14,13 +14,9 @@ namespace ProEventos.Application.Dtos.Lot
         public decimal Price { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string StartDate { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string EndDate { get; set; }
 
         [Required]

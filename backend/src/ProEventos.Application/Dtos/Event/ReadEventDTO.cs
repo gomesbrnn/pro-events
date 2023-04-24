@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ProEventos.Application.Dtos.Lot;
 using ProEventos.Application.Dtos.SocialMedia;
@@ -9,7 +10,7 @@ namespace ProEventos.Application.Dtos.Event
     {
         public int Id { get; set; }
         public string City { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Theme { get; set; }
         public int AmountPeople { get; set; }
         public string ImageURL { get; set; }

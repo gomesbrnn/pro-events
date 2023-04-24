@@ -11,8 +11,6 @@ namespace ProEventos.Application.Dtos.Event
         public string City { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string Date { get; set; }
 
         [Required]
