@@ -59,7 +59,7 @@
                     <div class="form-group col-sm-5">
                         <label>First Name</label>
                         <input type="text" class="form-control" formControlName="name"
-                            [ngClass]="{'is-invalid': form.name.errors && form.name.touched}" />
+                            [ngClass]="inputValidator(form.name)" />
 
                         <div class="invalid-feedback" *ngIf="form.name.errors?.required">
                             Name is required.
@@ -68,7 +68,7 @@
                     <div class="form-group col-sm-5">
                         <label>Last Name</label>
                         <input type="text" class="form-control" formControlName="lastName"
-                            [ngClass]="{'is-invalid': form.lastName.errors && form.lastName.touched}" />
+                            [ngClass]="inputValidator(form.lastName)" />
 
                         <div class="invalid-feedback" *ngIf="form.lastName.errors?.required">
                             Last name is required.
@@ -79,7 +79,7 @@
                     <div class="form-group col-sm-5">
                         <label>E-mail</label>
                         <input type="text" class="form-control" formControlName="email"
-                            [ngClass]="{'is-invalid': form.email.errors && form.email.touched}" />
+                            [ngClass]="inputValidator(form.email)" />
 
                         <div class="invalid-feedback" *ngIf="form.email.errors?.required">
                             Email is required.
@@ -91,7 +91,7 @@
                     <div class="form-group col-sm-4">
                         <label>Phone</label>
                         <input type="text" class="form-control" formControlName="phone"
-                            [ngClass]="{'is-invalid': form.phone.errors && form.phone.touched}" />
+                            [ngClass]="inputValidator(form.phone)" />
 
                         <div class="invalid-feedback" *ngIf="form.phone.errors?.required">
                             Phone is required.
@@ -111,7 +111,7 @@
                     <form-group class="col-12">
                         <label>Description</label>
                         <input type="text" class="form-control" formControlName="personalResume"
-                            [ngClass]="{'is-invalid': form.personalResume.errors && form.personalResume.touched}" />
+                            [ngClass]="inputValidator(form.personalResume)" />
 
                         <div class="invalid-feedback" *ngIf="form.personalResume.errors?.required">
                             Description is required.
@@ -126,7 +126,7 @@
                     <div class="form-group col-sm">
                         <label>Password</label>
                         <input type="password" class="form-control" formControlName="password"
-                            [ngClass]="{'is-invalid': form.password.errors && form.password.touched}" />
+                            [ngClass]="inputValidator(form.password)" />
 
                         <div class="invalid-feedback" *ngIf="form.password.errors?.required">
                             Password is required.
@@ -138,7 +138,7 @@
                     <div class="form-group col-sm">
                         <label>Confirm Password</label>
                         <input type="password" class="form-control" formControlName="confirmPassword"
-                            [ngClass]="{'is-invalid': form.confirmPassword.errors && form.confirmPassword.touched}" />
+                            [ngClass]="inputValidator(form.confirmPassword)" />
 
                         <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.required">
                             Confirm password is required.

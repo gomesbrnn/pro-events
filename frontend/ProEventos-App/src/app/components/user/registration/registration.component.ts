@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FieldValidator } from 'src/app/helpers/field-validator';
 
 @Component({
@@ -43,4 +43,8 @@ export class RegistrationComponent {
       Validators.minLength(8)
     ]]
   }, this.formOptions)
+
+  inputValidator(formField: FormControl): any {
+    return { 'is-invalid': formField.errors && formField.touched }
+  }
 }

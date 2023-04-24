@@ -18,8 +18,7 @@
                 <div class="form-group col-sm-6">
                     <label>First name</label>
                     <input type="text" class="form-control" placeholder="Insert your first name"
-                        formControlName="firstName"
-                        [ngClass]="{'is-invalid': form.firstName.errors && form.firstName.touched}" />
+                        formControlName="firstName" [ngClass]="inputValidator(form.firstName)" />
 
                     <div class="invalid-feedback" *ngIf="form.firstName.errors?.required">
                         First name is required.
@@ -29,8 +28,7 @@
                 <div class="form-group col-sm-6">
                     <label>Last name</label>
                     <input type="text" class="form-control" placeholder="Insert your last name"
-                        formControlName="lastName"
-                        [ngClass]="{'is-invalid': form.lastName.errors && form.lastName.touched}" />
+                        formControlName="lastName" [ngClass]="inputValidator(form.lastName)" />
 
                     <div class="invalid-feedback" *ngIf="form.lastName.errors?.required">
                         Last name is required.
@@ -41,7 +39,7 @@
             <div class="form-group">
                 <label for="">Email:</label>
                 <input class="form-control" type="text" placeholder="Insert your last email" formControlName="email"
-                    [ngClass]="{'is-invalid': form.email.errors && form.email.touched}" />
+                    [ngClass]="inputValidator(form.email)" />
 
                 <div class="invalid-feedback" *ngIf="form.email.errors?.required">
                     Email is required.
@@ -54,7 +52,7 @@
             <div class="form-group">
                 <label for="">User:</label>
                 <input class="form-control" type="text" placeholder="Insert your user name" formControlName="username"
-                    [ngClass]="{'is-invalid': form.username.errors && form.username.touched}" />
+                    [ngClass]="inputValidator(form.username)" />
 
                 <div class="invalid-feedback" *ngIf="form.username.errors?.required">
                     Username is required.
@@ -68,8 +66,7 @@
                 <div class="form-group col-sm-6">
                     <label for="">Password:</label>
                     <input class="form-control" type="password" placeholder="Insert your password"
-                        formControlName="password"
-                        [ngClass]="{'is-invalid': form.password.errors && form.password.touched}" />
+                        formControlName="password" [ngClass]="inputValidator(form.password)" />
 
                     <div class="invalid-feedback" *ngIf="form.password.errors?.required">
                         Password is required.
@@ -82,8 +79,7 @@
                 <div class="form-group col-sm-6">
                     <label for="">Confirm password:</label>
                     <input class="form-control" type="password" placeholder="Confirm the password"
-                        formControlName="confirmPassword"
-                        [ngClass]="{'is-invalid': form.confirmPassword.errors && form.confirmPassword.touched}" />
+                        formControlName="confirmPassword" [ngClass]="inputValidator(form.confirmPassword)" />
 
                     <div class="invalid-feedback" *ngIf="form.confirmPassword.errors?.required">
                         Confirm password is required.
