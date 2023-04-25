@@ -84,13 +84,14 @@ export class EventListComponent implements OnInit {
 
   modalRef?: BsModalRef;
 
-  public openModal(template: TemplateRef<void>): void {
+  public openModal(event: any, template: TemplateRef<void>): void {
+    event.stopPropagation();
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   public confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('Deleted Successfully!');
+    this.toastr.success('Event deleted Successfully');
   }
 
   public decline(): void {
