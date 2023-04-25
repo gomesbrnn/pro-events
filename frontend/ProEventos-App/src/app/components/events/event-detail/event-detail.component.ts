@@ -11,7 +11,11 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventDetailComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: ActivatedRoute,
+    private eventService: EventService
+  ) { }
 
   /* -------------- Reactive Form -------------------- */
 
@@ -60,6 +64,31 @@ export class EventDetailComponent implements OnInit {
 
   });
 
+
+  /* -------------- Calling Services -------------------- */
+
+  public event = {} as Event;
+
+  public getEventById() {
+
+    const eventId = this.router.snapshot.paramMap.get('id');
+
+    if (eventId != null) {
+
+      this.eventService.getEventById(+eventId).subscribe(
+
+        (eventResponse: Event) => {
+          this.event = { ...eventResponse };
+          this.eventDetailsForm.patchValue(this.event);
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
+
+    }
+  }
+
   /* ------------------- Others ----------------------- */
 
   get bsConfig() {
@@ -73,6 +102,6 @@ export class EventDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventDetailsForm
+    this.getEventById();
   }
 }
