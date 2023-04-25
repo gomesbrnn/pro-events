@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Event } from 'src/app/models/event';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -7,24 +10,21 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
+
   constructor(private formBuilder: FormBuilder) { }
+
+  /* -------------- Reactive Form -------------------- */
 
   get form() {
     return this.eventDetailsForm.controls;
   }
 
-  get bsConfig() {
-    return {
-      isAnimated: true,
-      adaptivePosition: true,
-      dateInputFormat: 'DD/MM/YYYY hh:mm a',
-      containerClass: 'theme-default',
-      showWeekNumbers: false
-    }
-  }
-
   public resetForm(): void {
     this.eventDetailsForm.reset();
+  }
+
+  inputValidator(formField: FormControl): any {
+    return { 'is-invalid': formField.errors && formField.touched }
   }
 
   eventDetailsForm = this.formBuilder.group({
@@ -60,8 +60,16 @@ export class EventDetailComponent implements OnInit {
 
   });
 
-  inputValidator(formField: FormControl): any {
-    return { 'is-invalid': formField.errors && formField.touched }
+  /* ------------------- Others ----------------------- */
+
+  get bsConfig() {
+    return {
+      isAnimated: true,
+      adaptivePosition: true,
+      dateInputFormat: 'DD/MM/YYYY hh:mm a',
+      containerClass: 'theme-default',
+      showWeekNumbers: false
+    }
   }
 
   ngOnInit(): void {
