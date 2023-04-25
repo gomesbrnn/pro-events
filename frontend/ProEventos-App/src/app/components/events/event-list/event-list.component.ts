@@ -21,6 +21,11 @@ export class EventListComponent implements OnInit {
     private router: Router
   ) { }
 
+  ngOnInit(): void {
+    this.spinner.show();
+    this.getEvents()
+  }
+
   /* -------------- Calling Services -------------------- */
 
   public events: Event[] = [];
@@ -32,16 +37,20 @@ export class EventListComponent implements OnInit {
       (eventsResponse: Event[]) => {
         this.events = eventsResponse;
         this.filteredEvents = eventsResponse;
-        setTimeout(() => { this.spinner.hide(); }, 500);
       },
 
       (error: any) => {
-        this.spinner.hide();
-        this.toastr.error('Error on load Events', 'Error');
+        setTimeout(() => {
+          this.spinner.hide();
+          this.toastr.error('Error on load Events', 'Error');
+        }, 500);
         console.error(error);
+      },
+
+      () => {
+        setTimeout(() => { this.spinner.hide(); }, 500);
       }
     )
-
   }
 
   /* -------------- Dynamic Filter -------------------- */
@@ -98,10 +107,5 @@ export class EventListComponent implements OnInit {
 
   public eventDetail(id: number) {
     this.router.navigate([`events/detail/${id}`]);
-  }
-
-  ngOnInit(): void {
-    this.spinner.show();
-    this.getEvents()
   }
 }

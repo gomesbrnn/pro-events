@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { Event } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event.service';
 
@@ -14,8 +16,15 @@ export class EventDetailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) { }
+
+  ngOnInit(): void {
+    this.spinner.show();
+    this.getEventById();
+  }
 
   /* -------------- Reactive Form -------------------- */
 
@@ -83,11 +92,18 @@ export class EventDetailComponent implements OnInit {
         },
 
         (error: any) => {
+          setTimeout(() => {
+            this.spinner.hide();
+            this.toastr.error('Error on load Event', 'Error');
+          }, 500);
           console.error(error);
+        },
+
+        () => {
+          setTimeout(() => { this.spinner.hide(); }, 500);
         }
       )
     }
-
   }
 
   /* ------------------- Others ----------------------- */
@@ -102,7 +118,5 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.getEventById();
-  }
+
 }
