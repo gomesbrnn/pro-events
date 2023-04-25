@@ -35,8 +35,10 @@
 
                 <div class="form-group col-md-4">
                     <label>Date and Time</label>
-                    <input type="datetime" bsDatepicker [bsConfig]="bsConfig" class="form-control"
-                        formControlName="date" [ngClass]="inputValidator(form.date)">
+
+                    <input type="datetime" class="form-control" formControlName="date" bsDatepicker
+                        [bsConfig]="bsConfig" [ngClass]="inputValidator(form.date)"
+                        value="{{event.date | date:'dd/MM/yyyy HH:mm a'}}">
 
                     <div class="invalid-feedback" *ngIf="form.date.errors?.required">
                         Date and Time is required.
