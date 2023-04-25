@@ -26,18 +26,22 @@ export class EventListComponent implements OnInit {
   public events: Event[] = [];
 
   public getEvents(): void {
+
     this.eventService.getEvents().subscribe(
-      response => {
-        this.events = response;
-        this.filteredEvents = response;
+
+      (eventsResponse: Event[]) => {
+        this.events = eventsResponse;
+        this.filteredEvents = eventsResponse;
         setTimeout(() => { this.spinner.hide(); }, 500);
       },
-      error => {
+
+      (error: any) => {
         this.spinner.hide();
         this.toastr.error('Error on load Events', 'Error');
-        console.log(error);
+        console.error(error);
       }
     )
+
   }
 
   /* -------------- Dynamic Filter -------------------- */

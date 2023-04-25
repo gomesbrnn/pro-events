@@ -81,11 +81,11 @@ export class EventDetailComponent implements OnInit {
           this.event = { ...eventResponse };
           this.eventDetailsForm.patchValue(this.event);
         },
+
         (error: any) => {
           console.error(error);
         }
-      );
-
+      )
     }
 
   }
