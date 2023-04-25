@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss']
 })
-export class EventListComponent {
+export class EventListComponent implements OnInit {
+
   constructor(
     private eventService: EventService,
     private modalService: BsModalService,
@@ -20,15 +21,30 @@ export class EventListComponent {
     private router: Router
   ) { }
 
-  modalRef?: BsModalRef;
-  public events: Event[] = [];
-  public filteredEvents: Event[] = [];
-  private _listFilter = '';
-  public displayImage = true;
+  /* -------------- Calling Services -------------------- */
 
-  public changeImageStatus(): void {
-    this.displayImage = !this.displayImage;
+  public events: Event[] = [];
+
+  public getEvents(): void {
+    this.eventService.getEvents().subscribe(
+      response => {
+        this.events = response;
+        this.filteredEvents = response;
+        setTimeout(() => { this.spinner.hide(); }, 500);
+      },
+      error => {
+        this.spinner.hide();
+        this.toastr.error('Error on load Events', 'Error');
+        console.log(error);
+      }
+    )
   }
+
+  /* -------------- Dynamic Filter -------------------- */
+
+  public filteredEvents: Event[] = [];
+
+  private _listFilter = '';
 
   public get listFilter() {
     return this._listFilter;
@@ -51,20 +67,9 @@ export class EventListComponent {
     )
   }
 
-  public getEvents(): void {
-    this.eventService.getEvents().subscribe(
-      response => {
-        this.events = response;
-        this.filteredEvents = response;
-        setTimeout(() => { this.spinner.hide(); }, 500);
-      },
-      error => {
-        this.spinner.hide();
-        this.toastr.error('Error on load Events', 'Error');
-        console.log(error);
-      }
-    )
-  }
+  /* ------------------- Modal ----------------------- */
+
+  modalRef?: BsModalRef;
 
   public openModal(template: TemplateRef<void>): void {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
@@ -81,6 +86,14 @@ export class EventListComponent {
 
   public eventDetail(id: number) {
     this.router.navigate([`events/detail/${id}`]);
+  }
+
+  /* ------------------- Others ----------------------- */
+
+  public displayImage = true;
+
+  public changeImageStatus(): void {
+    this.displayImage = !this.displayImage;
   }
 
   ngOnInit(): void {
