@@ -88,16 +88,16 @@ export class EventListComponent implements OnInit {
     this.modalRef?.hide();
   }
 
-  public eventDetail(id: number) {
-    this.router.navigate([`events/detail/${id}`]);
-  }
-
   /* ------------------- Others ----------------------- */
 
   public displayImage = true;
 
   public changeImageStatus(): void {
     this.displayImage = !this.displayImage;
+  }
+
+  public eventDetail(id: number) {
+    this.router.navigate([`events/detail/${id}`]);
   }
 
   ngOnInit(): void {
