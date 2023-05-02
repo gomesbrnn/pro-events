@@ -34,6 +34,5 @@ namespace ProEventos.Application.Dtos.Event
         public IEnumerable<int> LotsId { get; set; }
         public IEnumerable<int> SocialMediaId { get; set; }
         public IEnumerable<int> SpeakersId { get; set; }
-        public bool Status { get; set; }
     }
 }
