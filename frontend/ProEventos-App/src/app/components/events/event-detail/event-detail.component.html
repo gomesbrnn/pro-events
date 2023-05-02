@@ -108,7 +108,7 @@
                 <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
                     Cancel changes
                 </button>
-                <button class="btn btn-success" [disabled]="!eventDetailsForm.valid">
+                <button class="btn btn-success" [disabled]="!eventDetailsForm.valid" (click)="createEvent()">
                     <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
                     Save changes
                 </button>

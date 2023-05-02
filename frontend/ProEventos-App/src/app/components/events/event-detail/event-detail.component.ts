@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Event } from 'src/app/models/event';
@@ -15,7 +15,8 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: ActivatedRoute,
+    private actRoute: ActivatedRoute,
+    private router: Router,
     private eventService: EventService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
@@ -61,7 +62,7 @@ export class EventDetailComponent implements OnInit {
     phone: ['', [
       Validators.required,
       Validators.minLength(11),
-      Validators.maxLength(12)
+      Validators.maxLength(15)
     ]],
     email: ['', [
       Validators.required,
@@ -80,7 +81,7 @@ export class EventDetailComponent implements OnInit {
 
   public getEventById() {
 
-    const eventId = this.router.snapshot.paramMap.get('id');
+    const eventId = this.actRoute.snapshot.paramMap.get('id');
 
     if (eventId != null) {
 
@@ -106,6 +107,35 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
+  public createEvent() {
+
+    this.spinner.show();
+
+    if (this.eventDetailsForm.valid) {
+
+      this.event = { ... this.eventDetailsForm.value } as Event
+      this.eventService.createEvent(this.event).subscribe(
+
+        () => {
+          setTimeout(() => {
+            this.spinner.hide();
+            this.toastr.success('Event creeated', 'Success');
+            this.router.navigate(['/events/list'])
+          }, 500);
+        },
+
+        (error) => {
+          setTimeout(() => {
+            this.spinner.hide();
+            this.toastr.error('Error on create Event', 'Error');
+          }, 500);
+          console.error(error);
+        }
+      )
+
+    }
+  }
+
   /* ------------------- Others ----------------------- */
 
   get bsConfig() {
@@ -118,5 +148,8 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
-
+  public saveChanges() {
+    console.log('bla');
+    if (this.eventDetailsForm.valid) { this.createEvent() }
+  }
 }
