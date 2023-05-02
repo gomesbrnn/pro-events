@@ -55,6 +55,8 @@ export class EventListComponent implements OnInit {
 
   public deleteEvent(eventId: number) {
 
+    this.spinner.show();
+
     this.eventService.deleteEvent(eventId).subscribe(
 
       () => {
