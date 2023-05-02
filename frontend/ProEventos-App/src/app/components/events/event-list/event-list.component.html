@@ -51,7 +51,7 @@
                 <td class="d-none d-md-table-cell">{{event.amountPeople}}</td>
                 <td class="d-none d-md-table-cell">{{event.lots[0]?.name}}</td>
                 <td>
-                    <a class="btn btn-danger btn-sm" (click)="openModal($event ,template)">
+                    <a class="btn btn-danger btn-sm" (click)="openModal($event ,template, event.id)">
                         <i class="fa fa-trash"></i>
                         Delete
                     </a>
