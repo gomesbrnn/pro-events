@@ -25,6 +25,7 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getEventById();
+    if (this.saveMode == 'post') setTimeout(() => { this.spinner.hide(); }, 500);
   }
 
   /* -------------- Reactive Form -------------------- */
@@ -33,12 +34,18 @@ export class EventDetailComponent implements OnInit {
     return this.eventDetailsForm.controls;
   }
 
+  public inputValidator(formField: FormControl): any {
+    return { 'is-invalid': formField.errors && formField.touched }
+  }
+
   public resetForm(): void {
     this.eventDetailsForm.reset();
   }
 
-  inputValidator(formField: FormControl): any {
-    return { 'is-invalid': formField.errors && formField.touched }
+  public saveChanges() {
+    this.saveMode == 'post'
+      ? this.createEvent()
+      : this.updateEvent();
   }
 
   eventDetailsForm = this.formBuilder.group({
@@ -74,10 +81,10 @@ export class EventDetailComponent implements OnInit {
 
   });
 
-
   /* -------------- Calling Services -------------------- */
 
   public event = {} as Event;
+  public saveMode = 'post';
 
   public getEventById() {
 
@@ -85,6 +92,7 @@ export class EventDetailComponent implements OnInit {
 
     if (eventId != null) {
 
+      this.saveMode = 'put'
       this.eventService.getEventById(+eventId).subscribe(
 
         (eventResponse: Event) => {
@@ -136,6 +144,35 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
+  public updateEvent() {
+
+    this.spinner.show();
+
+    if (this.eventDetailsForm.valid) {
+
+      this.event = { id: this.event.id, ... this.eventDetailsForm.value } as Event
+      this.eventService.updateEvent(this.event, this.event.id).subscribe(
+
+        () => {
+          setTimeout(() => {
+            this.spinner.hide();
+            this.toastr.success('Event updated', 'Success');
+            this.router.navigate(['/events/list'])
+          }, 500);
+        },
+
+        (error) => {
+          setTimeout(() => {
+            this.spinner.hide();
+            this.toastr.error('Error on create Event', 'Error');
+          }, 500);
+          console.error(error);
+        }
+      )
+
+    }
+  }
+
   /* ------------------- Others ----------------------- */
 
   get bsConfig() {
@@ -146,10 +183,5 @@ export class EventDetailComponent implements OnInit {
       containerClass: 'theme-default',
       showWeekNumbers: false
     }
-  }
-
-  public saveChanges() {
-    console.log('bla');
-    if (this.eventDetailsForm.valid) { this.createEvent() }
   }
 }
