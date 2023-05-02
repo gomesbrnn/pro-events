@@ -80,6 +80,8 @@ namespace ProEventos.Application.Services
 
             await _eventRepository.DeleteEventById(eventExists.Id);
 
+            if (!await _generalRepository.SaveChangesAsync()) return null;
+
             return _mapper.Map<ReadEventDTO>(eventExists);
         }
     }
