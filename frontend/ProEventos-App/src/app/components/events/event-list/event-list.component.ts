@@ -53,6 +53,28 @@ export class EventListComponent implements OnInit {
     )
   }
 
+  public deleteEvent(eventId: number) {
+
+    this.eventService.deleteEvent(eventId).subscribe(
+
+      () => {
+        setTimeout(() => {
+          this.spinner.hide();
+          this.getEvents();
+          this.toastr.success('Event deleted Successfully');
+        }, 500);
+      },
+
+      (error: any) => {
+        setTimeout(() => {
+          this.spinner.hide();
+          this.toastr.error('Error on delete this event', 'Error');
+        }, 500);
+        console.error(error);
+      }
+    )
+  }
+
   /* -------------- Dynamic Filter -------------------- */
 
   public filteredEvents: Event[] = [];
@@ -82,16 +104,18 @@ export class EventListComponent implements OnInit {
 
   /* ------------------- Modal ----------------------- */
 
-  modalRef?: BsModalRef;
+  public modalRef?: BsModalRef;
+  public eventId = 0;
 
-  public openModal(event: any, template: TemplateRef<void>): void {
+  public openModal(event: any, template: TemplateRef<void>, eventId: number): void {
     event.stopPropagation();
+    this.eventId = eventId;
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   public confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('Event deleted Successfully');
+    this.deleteEvent(this.eventId);
   }
 
   public decline(): void {
