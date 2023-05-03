@@ -27,7 +27,7 @@ namespace ProEventos.Persistence.Repositories
             return await query.ToArrayAsync();
         }
 
-        public async Task<Lot> GetLotByIds(int eventId, int id)
+        public async Task<Lot> GetLotByIdsAsync(int eventId, int id)
         {
             IQueryable<Lot> query = _context.Lots.Where(lot =>
                                                   lot.EventId == eventId &&
@@ -37,10 +37,11 @@ namespace ProEventos.Persistence.Repositories
             return await query.FirstAsync();
         }
 
-        public async Task<Lot> DeleteLotByEventId(int eventId)
+        public async Task<Lot> DeleteLotByIdsAsync(int eventId, int id)
         {
             Lot query = await _context.Lots.FirstAsync(lot =>
                                                   lot.EventId == eventId &&
+                                                  lot.Id == id &&
                                                   lot.Status == true);
 
             if (query is null) return null;
