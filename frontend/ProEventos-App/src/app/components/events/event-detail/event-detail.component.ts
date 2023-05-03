@@ -25,7 +25,7 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getEventById();
-    if (this.saveMode == 'post') setTimeout(() => { this.spinner.hide(); }, 500);
+    if (this.saveMode == 'post') setTimeout(() => { this.spinner.hide(); }, 400);
   }
 
   /* -------------- Reactive Form -------------------- */
@@ -87,11 +87,9 @@ export class EventDetailComponent implements OnInit {
   public saveMode = 'post';
 
   public getEventById() {
-
     const eventId = this.actRoute.snapshot.paramMap.get('id');
 
     if (eventId != null) {
-
       this.saveMode = 'put'
       this.eventService.getEventById(+eventId).subscribe(
 
@@ -101,75 +99,50 @@ export class EventDetailComponent implements OnInit {
         },
 
         (error: any) => {
-          setTimeout(() => {
-            this.spinner.hide();
-            this.toastr.error('Error on load Event', 'Error');
-          }, 500);
+          this.toastr.error('Error on load Event', 'Error');
           console.error(error);
-        },
-
-        () => {
-          setTimeout(() => { this.spinner.hide(); }, 500);
         }
-      )
+      ).add(() => setTimeout(() => { this.spinner.hide() }, 400))
     }
   }
 
   public createEvent() {
-
     this.spinner.show();
 
     if (this.eventDetailsForm.valid) {
-
       this.event = { ... this.eventDetailsForm.value } as Event
       this.eventService.createEvent(this.event).subscribe(
 
         () => {
-          setTimeout(() => {
-            this.spinner.hide();
-            this.toastr.success('Event creeated', 'Success');
-            this.router.navigate(['/events/list'])
-          }, 500);
+          this.toastr.success('Event creeated', 'Success');
+          this.router.navigate(['/events/list'])
         },
 
         (error) => {
-          setTimeout(() => {
-            this.spinner.hide();
-            this.toastr.error('Error on create Event', 'Error');
-          }, 500);
+          this.toastr.error('Error on create Event', 'Error');
           console.error(error);
         }
-      )
-
+      ).add(() => setTimeout(() => { this.spinner.hide() }, 400))
     }
   }
 
   public updateEvent() {
-
     this.spinner.show();
 
     if (this.eventDetailsForm.valid) {
-
       this.event = { id: this.event.id, ... this.eventDetailsForm.value } as Event
       this.eventService.updateEvent(this.event, this.event.id).subscribe(
 
         () => {
-          setTimeout(() => {
-            this.spinner.hide();
-            this.toastr.success('Event updated', 'Success');
-            this.router.navigate(['/events/list'])
-          }, 500);
+          this.toastr.success('Event updated', 'Success');
+          this.router.navigate(['/events/list'])
         },
 
         (error) => {
-          setTimeout(() => {
-            this.spinner.hide();
-            this.toastr.error('Error on create Event', 'Error');
-          }, 500);
+          this.toastr.error('Error on create Event', 'Error');
           console.error(error);
         }
-      )
-
+      ).add(() => setTimeout(() => { this.spinner.hide() }, 400))
     }
   }
 

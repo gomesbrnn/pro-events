@@ -31,7 +31,6 @@ export class EventListComponent implements OnInit {
   public events: Event[] = [];
 
   public getEvents(): void {
-
     this.eventService.getEvents().subscribe(
 
       (eventsResponse: Event[]) => {
@@ -40,41 +39,27 @@ export class EventListComponent implements OnInit {
       },
 
       (error: any) => {
-        setTimeout(() => {
-          this.spinner.hide();
-          this.toastr.error('Error on load Events', 'Error');
-        }, 500);
+        this.toastr.error('Error on load Events', 'Error');
         console.error(error);
-      },
-
-      () => {
-        setTimeout(() => { this.spinner.hide(); }, 500);
       }
-    )
+    ).add(() => setTimeout(() => { this.spinner.hide() }, 400))
   }
 
   public deleteEvent(eventId: number) {
-
     this.spinner.show();
 
     this.eventService.deleteEvent(eventId).subscribe(
 
       () => {
-        setTimeout(() => {
-          this.spinner.hide();
-          this.getEvents();
-          this.toastr.success('Event deleted Successfully');
-        }, 500);
+        this.getEvents();
+        this.toastr.success('Event deleted Successfully');
       },
 
       (error: any) => {
-        setTimeout(() => {
-          this.spinner.hide();
-          this.toastr.error('Error on delete this event', 'Error');
-        }, 500);
+        this.toastr.error('Error on delete this event', 'Error');
         console.error(error);
       }
-    )
+    ).add(() => setTimeout(() => { this.spinner.hide() }, 400))
   }
 
   /* -------------- Dynamic Filter -------------------- */
