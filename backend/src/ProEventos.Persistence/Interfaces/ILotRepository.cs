@@ -24,7 +24,8 @@ namespace ProEventos.Persistence.Interfaces
         /// Delete method that inactivates one lot
         /// </summary>
         /// <param name="eventId">Primary key from event table<</param>
+        /// <param name="id">Primary key from lot table</param>
         /// <returns>The lot that been deleted</returns>
-        Task<Lot> DeleteLotByEventIdAsync(int eventId);
+        Task<Lot> DeleteLotByIdsAsync(int eventId, int id);
     }
 }
