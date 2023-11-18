@@ -19,9 +19,9 @@ namespace ProEventos.Persistence.Repositories
         public async Task<Speaker[]> GetAllSpeakersAsync(bool includeEvents = false)
         {
             IQueryable<Speaker> query = _context.Speakers
-                                                                 .Include(p => p.SocialMedia)
-                                                                 .OrderBy(p => p.Id)
-                                                                 .AsNoTracking();
+                                                        .Include(p => p.SocialMedia)
+                                                        .OrderBy(p => p.Id)
+                                                        .AsNoTracking();
 
             if (includeEvents is true)
             {
